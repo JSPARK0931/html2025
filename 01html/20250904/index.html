@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        .box{
+            width: 100px;
+            /* width: 100%; */
+            height: 100px;
+            background: skyblue;
+            position: relative; /* 좌표사옹 */
+
+            left: 50px;
+            top: 50px;
+            bottom: 50px;
+            right: 50px;
+        }
+        .box1{
+            width: 100px;
+            /* width: 100%; */
+            height: 100px;
+            background: pink;
+            position: relative; /* 좌표사옹 */
+
+            left: 100px;
+        }
+
+        .boxwrap{
+            width: 300px;
+            height: 300px;
+            background:  blue;
+            position: relative;
+
+        }
+        .box3{
+            width: 100px;
+            /* width: 100%; */
+            height: 100px;
+            background: pink;
+            position: absolute; /* 좌표사옹 */
+
+            left: 100px;
+        }
+        .boxwrap1{
+            width: 300px;
+            height: 300px;
+            background: red;
+        }
+        .boxwrap1{
+            width: 300px;
+            height: 300px;
+            background: green;
+        }
+
+    </style>
+</head>
+<body>
+    <!--
+    <div class="box">1</div>
+    <div class="box1">2</div>
+    --> 
+    <div class="boxwrap">
+        boxwrap
+        <div class="box3">3</div>
+    </div>
+    <div class="boxwrap1">
+        boxwrap1
+    </div>
+    <div class="boxwrap2">
+        boxwrap2
+    </div>
+    <script></script>
+</body>
+</html>

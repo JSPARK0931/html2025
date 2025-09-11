@@ -1,0 +1,133 @@
+body {
+  background: skyblue;
+}
+.container {
+  width: 1320px;
+  margin: 0 auto;
+}
+
+/* header */
+/* header 밑의 자식만 cf).heaber div와 차이 */
+/* .header > div {
+} */
+.header {
+  display: flex;
+  /* 가로정렬 */
+  justify-content: space-between;
+  /* 세로정렬 */
+  align-items: center;
+}
+.header .menu {
+  display: flex;
+  /* 메뉴사이에 GAP을 준다 */
+  gap: 20px;
+}
+/* .header .menu .li {
+  padding: 6px 16px;
+}
+.header .menu .li:hover {
+  background: pink;
+} */
+
+.header .menu a {
+  /* 1 */
+  /* display: block;
+  padding: 6px 16px; */
+  /* 2 */
+  /* display: block;
+  width: 100px;
+  height: 30px;
+  text-align: center;
+  line-height: 30px; 줄간격 - 글자가 많아지면 넘쳐남 */
+  /* 3 */
+  width: 100px;
+  height: 30px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.header .menu a:hover {
+  background: pink;
+}
+
+.header .toggle {
+  /* display: none; */
+  width: 36px;
+  height: 35px;
+  background: white;
+  /* display: flex; */
+  display: none;
+  justify-content: center;
+  align-items: center;
+  position: relative;
+}
+
+.toggle div {
+  width: 23px;
+  height: 5px;
+  background: #000;
+  border-radius: 2px;
+  position: absolute;
+}
+
+.toggle .bar1 {
+  transform: translateY(-8px);
+}
+.toggle .bar3 {
+  transform: translateY(8px);
+}
+/* visual */
+
+/* common */
+.bg-color1 {
+  background: rgb(64, 142, 173);
+}
+.bg-color2 {
+  background: rgb(198, 198, 198);
+}
+
+/** css responsive  breakpoint **/
+/* x width : 그이상될때 1199~1399 일때동작*/
+@media (max-width: 1399px) {
+  body {
+    background: pink;
+  }
+  .container {
+    width: 1140px;
+    background: rgb(168, 47, 68);
+  }
+}
+
+@media (max-width: 1199px) {
+  body {
+    background: red;
+  }
+}
+
+@media (max-width: 991px) {
+}
+
+/* 767되는 순간 스크롤이 사라짐 - ex)모바일사이즈*/
+@media (max-width: 767px) {
+  .container {
+    width: 100%;
+    padding: 0 16px;
+  }
+}
+
+@media (max-width: 575px) {
+  body {
+    background: rgb(202, 197, 197);
+  }
+  .container {
+    /* width: 100%; */
+    background: gray;
+  }
+  .header .menu {
+    display: none;
+  }
+  /* 사이즈가줄면 toggle이 보임 */
+  .header .toggle {
+    display: flex;
+  }
+}

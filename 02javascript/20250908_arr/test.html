@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="ko">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <div class="city"></div>
+    <button onclick="cityInsert()">인천추가</button>
+    <script>
+      var cityData = ["서울", "대구", "부산", "대전"];
+
+      function cityList() {
+        cityData.forEach(function (item, index) {
+          console.log(item);
+          document.write("<div>" + item + "</div>");
+        });
+      }
+
+      cityList();
+
+      function cityInsert() {
+        cityData.push("인천");
+        cityList();
+      }
+    </script>
+  </body>
+</html>

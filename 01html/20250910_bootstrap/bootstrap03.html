@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="ko">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+    <title>Document</title>
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.8/css/bootstrap.min.css"
+      integrity="sha512-2bBQCjcnw658Lho4nlXJcc6WkV/UxpE/sAokbXPxQNGqmNdQrWqtw26Ns9kFF/yG792pKR1Sx8/Y1Lf1XN4GKA=="
+      crossorigin="anonymous"
+      referrerpolicy="no-referrer"
+    />
+    <link rel="stylesheet" href="css/style03.css" />
+  </head>
+  <body>
+    <!-- xl 일때 메뉴가 바뀜 md일때 메뉴가 바뀜 navbar-dark : 글씨 하얀색으로 바뀜-->
+    <nav class="navbar navbar-expand-md navbar-dark bg-dark fixed-top">
+      <div class="container">
+        <a class="navbar-brand" href="#">LOGO</a>
+        <button
+          class="navbar-toggler"
+          type="button"
+          data-bs-toggle="collapse"
+          data-bs-target="#navbarBasic"
+          aria-controls="navbarBasic"
+          aria-expanded="false"
+          aria-label="Toggle navigation"
+        >
+          <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarBasic">
+          <!-- ms-auto : 오른쪽으로       -->
+          <ul class="navbar-nav ms-auto mb-2 mb-xl-0">
+            <li class="nav-item">
+              <a class="nav-link active" aria-current="page" href="#">Home</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="#">Company</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="#">Product</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="#">Link</a>
+            </li>
+          </ul>
+          <!-- <form class="d-flex">
+            <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search" />
+            <button class="btn btn-outline-success" type="submit">Search</button>
+          </form> -->
+        </div>
+      </div>
+    </nav>
+    <!-- fluid : 메뉴전체가 보임 -->
+    <div class="container-fluid bg-primary"></div>
+
+    <!-- visual -->
+    <!-- py-5:padding 5 mb-3:윗 마진 3-->
+    <div class="bg-primary py-5 visual mb-3">
+      <div class="container py-5 text-center text-md-start text-white">
+        <h3>Lorem ipsum dolor sit.1</h3>
+        <p class="d-none d-md-block">Lorem ipsum dolor sit amet consectetur adipisicing elit. Minus, aut!</p>
+      </div>
+    </div>
+    <!-- section1 -->
+    <!-- <div class="container sec01">
+      <div class="row">
+        <div class="col">test</div>
+        <div class="col"></div>
+      </div>
+    </div> -->
+    <div class="container sec01">
+      <div class="row">
+        <!-- dlsplay flex, 컬럼으로 축바뀜 , 가로정렬, 왼쪽 align-items-start:왼쪽, strech :가운데-->
+        <div
+          class="col-12 order-2 order-md-1 col-md-5 d-flex flex-column justify-content-center align-items-strech align-items-md-start text-center text-md-start py-5 px-5"
+        >
+          <h3>Lorem, ipsum dolor.</h3>
+          <p>Lorem ipsum, dolor sit amet consectetur adipisicing elit. Omnis, aut.</p>
+          <div class="btn btn-primary btn-sm">button</div>
+        </div>
+        <div class="col-12 order-1 order-md-2 col-md-7">
+          <!-- image 꽉차게, 둥글게 mb- mrgin bottom-->
+          <img src="img/cardImg01_01.png" class="img-fluid rounded mb-5" style="width: 100%" alt="" />
+        </div>
+      </div>
+    <div class="container sec02">
+      <div class="row">
+         <div class="col-md-7 ">
+           <img src="img/cardImg01_02.png" class="image-fluid rounded" style="width:100%" alt="" />
+         </div>
+        <div class="col-md-5 d-flex flex-column justify-content-end align-items-center align-items-md-end text-right text-md-start py-5 px-5">
+          <h3>Lorem, ipsum dolor.</h3>
+          <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Sunt</p>
+          <div class="btn btn-primary btn-sm"> button</div>
+        </div>
+      </div>
+    </div>
+    
+    <div style="height: 1000px"></div>
+    <script
+      src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.8/js/bootstrap.bundle.min.js"
+      integrity="sha512-HvOjJrdwNpDbkGJIG2ZNqDlVqMo77qbs4Me4cah0HoDrfhrbA+8SBlZn1KrvAQw7cILLPFJvdwIgphzQmMm+Pw=="
+      crossorigin="anonymous"
+      referrerpolicy="no-referrer"
+    ></script>
+  </body>
+</html>

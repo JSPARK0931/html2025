@@ -1,0 +1,71 @@
+.boxWrap {
+  width: 400px;
+  background: skyblue;
+  /* padding: 10px; */
+  display: flex;
+  justify-content: space-between;
+  gap: 10px;
+}
+
+.boxWrap div {
+  background: pink;
+  /* 전체크기를 동일하게 배분 - gap값이 필요함 */
+  flex-grow: 1;
+  /* width: 100px; */
+}
+
+.boxWrap1 {
+  width: 100px;
+  background: skyblue;
+  /* padding: 10px; */
+  display: flex;
+  /* justify-content: space-between; */
+  gap: 2px;
+}
+/* flex-grow는 컨텐츠가 커지면 배분량이 달라진다.*/
+.boxWrap1 div {
+  background: pink;
+  flex-grow: 1;
+  border: 1px solid #000;
+}
+
+.boxWrap2 {
+  background: skyblue;
+  display: flex;
+  width: 300px;
+  /* gap : 사이값 */
+  gap: 10px;
+  flex-wrap: wrap;
+}
+.boxWrap2 div {
+  background: pink;
+  /* width: 80px; */
+  /* width: 50%; */
+  /* width: calc((100% -10px) / 3); */
+  /* flex-grow: 1; */
+  /* flex-basis: 45%; */
+  /* width: 60px; */
+  /* flex wrap 한행에 4개면 gap이 3개이므로, 30px gap으로 계산 */
+  width: calc((100% - 30px) / 4);
+}
+
+.boxWrap3 {
+  width: 300px;
+  background: skyblue;
+  display: flex;
+  gap: 10px;
+}
+.boxWrap3 div {
+  flex-grow: 1;
+  background: pink;
+  /* 0.3초만큼 지연시킨다 */
+  transition: 0.3s;
+}
+/* .boxWrap3 .box2 {
+  flex-grow: 2;
+} */
+/* 마우스를 올리면 1.5만큼 늘어남 */
+.boxWrap3 div:hover {
+  background: blue;
+  flex-grow: 1.5;
+}

@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="ko">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width>, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <script>
+      var aData = [];
+
+      function insert_Arr() {
+        for (var i = 0; i < 100; i++) {
+          aData[i] = i + 1;
+        }
+        console.log(aData);
+        select_Arr();
+        add_Arr();
+      }
+      function select_Arr() {
+        for (var i = 0; i < aData.length; i++) {
+          document.write(aData[i] + " ");
+        }
+      }
+      function add_Arr() {
+        var sum = 0;
+        for (var i = 0; i < aData.length; i++) {
+          sum += aData[i];
+        }
+        document.write(sum);
+      }
+      insert_Arr();
+    </script>
+    <!-- <button onclick="insert_Arr()">배열생성</button> -->
+  </body>
+</html>
