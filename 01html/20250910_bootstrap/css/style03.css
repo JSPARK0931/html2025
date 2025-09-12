@@ -1,14 +1,30 @@
 .visual {
   height: 400px;
   background-image: url(../img/visual02.png);
+  background-position: center;
+  background-size: cover;
 }
-
 .visual h3 {
   /* font-size: 6vw; */
   font-size: 40px;
   font-weight: bold;
 }
 
+.online {
+  background-image: url(../img/visual02.png);
+  background-position: center;
+  background-size: cover;
+  background-attachment: fixed;
+}
+
+.copymenu ul,
+.copymenu li {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+/** css responsive  **/
 @media (max-width: 1399px) {
 }
 
@@ -28,3 +44,4 @@
   .visual h3 {
     font-size: 20px;
   }
+}

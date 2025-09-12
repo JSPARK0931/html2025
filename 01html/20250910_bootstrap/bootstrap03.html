@@ -13,6 +13,13 @@
       referrerpolicy="no-referrer"
     />
     <link rel="stylesheet" href="css/style03.css" />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/7.0.1/css/all.min.css"
+      integrity="sha512-2SwdPD6INVrV/lHTZbO2nodKhrnDdJK9/kg2XD1r9uGqPo1cUbujc+IYdlYdEErWNu69gVcYgdxlmVmzTWnetw=="
+      crossorigin="anonymous"
+      referrerpolicy="no-referrer"
+    />
   </head>
   <body>
     <!-- xl 일때 메뉴가 바뀜 md일때 메뉴가 바뀜 navbar-dark : 글씨 하얀색으로 바뀜-->
@@ -91,7 +98,8 @@
          <div class="col-md-7 ">
            <img src="img/cardImg01_02.png" class="image-fluid rounded" style="width:100%" alt="" />
          </div>
-        <div class="col-md-5 d-flex flex-column justify-content-end align-items-center align-items-md-end text-right text-md-start py-5 px-5">
+         <!-- display flex, 컬럼으로 축바뀜, 우측정렬, 아이템중간 , md아이템우측정렬, 텍스트md우측정렬, -->
+        <div class="col-md-5 d-flex flex-column justify-content-end align-items-center align-items-md-end text-right text-md-end py-5 px-5">
           <h3>Lorem, ipsum dolor.</h3>
           <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Sunt</p>
           <div class="btn btn-primary btn-sm"> button</div>
@@ -99,7 +107,119 @@
       </div>
     </div>
     
-    <div style="height: 1000px"></div>
+    <div style="height: 200px"></div>
+    <div class="online py-5 text-white text-center">
+      <div class="container py-0 py-md-5">
+        <div class="row">
+          <div class="col-md-6  offset-md-3" >
+            <h3 class="mb-5">Lorem, ipsum dolor.</h3>
+            <p>
+              Lorem ipsum dolor sit amet <br> consectetur adipisicing elit. Fugit cupiditate nisi deserunt quia nemo nostrum adipisci quidem similique possimus numquam itaque inventore ipsa ipsum distinctio, tempore suscipit obcaecati voluptatibus eaque. Non obcaecati quia hic, maxime expedita accusantium sequi ut 
+            </p>
+            <div class="btn btn-primary">MORE</div>
+          </div>
+        </div>  
+      </div>
+    </div> 
+    <div class = "py-5">
+      <div class="container px-5"></div>
+        <div class="row">
+          <div class="col-md-3 bg-info"> 로고
+          </div>
+          <div class="col-6 col-md">
+            <h4>company</h4>
+              <ul>
+                <li class="nav-item">
+                  <a class="nav-link" href="#">menu1</a>
+                </li>
+                <li class="nav-item">
+                  <a class="nav-link" href="#">menu2</a>
+                </li>
+                <li class="nav-item">
+                  <a class="nav-link" href="#">menu3</a>
+                </li>
+                <li class="nav-item">
+                  <a class="nav-link" href="#">menu4</a>
+                </li>
+              </ul>
+          </div>
+          <div class="col-6 col-md">
+            <h4>Product</h4>
+              <ul>
+                <li class="nav-item">
+                  <a class="nav-link" href="#">menu1</a>
+                </li>
+                <li class="nav-item">
+                  <a class="nav-link" href="#">menu2</a>
+                </li>
+                <li class="nav-item">
+                  <a class="nav-link" href="#">menu3</a>
+                </li>
+                <li class="nav-item">
+                  <a class="nav-link" href="#">menu4</a>
+                </li>
+              </ul>
+          </div>
+          <div class="col-6 col-md">
+            <h4>Online</h4>
+              <ul>
+                <li class="nav-item">
+                  <a class="nav-link" href="#">menu1</a>
+                </li>
+                <li class="nav-item">
+                  <a class="nav-link" href="#">menu2</a>
+                </li>
+                <li class="nav-item">
+                  <a class="nav-link" href="#">menu3</a>
+                </li>
+                <li class="nav-item">
+                  <a class="nav-link" href="#">menu4</a>
+                </li>
+              </ul>
+          </div>
+          <div class="col-6 col-md">
+            <h4>Community</h4>
+              <ul>
+                <li class="nav-item">
+                  <a class="nav-link" href="#">menu1</a>
+                </li>
+                <li class="nav-item">
+                  <a class="nav-link" href="#">menu2</a>
+                </li>
+                <li class="nav-item">
+                  <a class="nav-link" href="#">menu3</a>
+                </li>
+                <li class="nav-item">
+                  <a class="nav-link" href="#">menu4</a>
+                </li>
+              </ul>
+          </div>
+
+        </div>
+       <hr>
+       <div class="copymenu d-flex flex-column align-items-center flex-md-row justify-content-between">
+         <ul class ="d-flex gap-3">
+          <li><a href="#" class ="nav-link">Privasy</a></li>
+          <li>/</li>
+          <li><a href="#" class ="nav-link">Team</a></li>
+          <li>/</li>
+          <li><a href="#" class ="nav-link">Site map</a></li>
+         </ul>
+         <ul class="d-flex gap-3 text-danger">
+          <li>
+            <a href="#" class="nav-link"><i class="fa-brands fa-google"></i></a>
+          </li>
+          <li>
+            <a href="#" class="nav-link"><i class="fa-brands fa-instagram"></i></a>
+          </li>
+          <li>
+            <a href="#" class="nav-link"><i class="fa-brands fa-facebook-f"></i></a>
+          </li>
+         </ul>
+       </div> 
+
+    </div>
+
     <script
       src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.8/js/bootstrap.bundle.min.js"
       integrity="sha512-HvOjJrdwNpDbkGJIG2ZNqDlVqMo77qbs4Me4cah0HoDrfhrbA+8SBlZn1KrvAQw7cILLPFJvdwIgphzQmMm+Pw=="

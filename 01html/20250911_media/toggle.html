@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="ko">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <link rel="stylesheet" href="css/reset.css" />
+    <style>
+      /* * {
+        margin: 0;
+      } */
+      body {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+      }
+      .toggle {
+        width: 35px;
+        height: 35px;
+        background: skyblue;
+        border: 1px solid #000;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        position: relative;
+      }
+      .toggle div {
+        width: 25px;
+        height: 4px;
+        background: #000;
+        border-radius: 2px;
+        position: absolute;
+        transition: 0.3s;
+      }
+      /* bar 위치조정 */
+      .toggle .bar1 {
+        transform: translateY(-8px);
+      }
+
+      .toggle .bar3 {
+        transform: translateY(8px);
+      }
+
+      /* bar클릭시 45도 회전, bar2는 투명  */
+      .toggle.active .bar1 {
+        transform: translateY(0) rotate(45deg);
+      }
+      .toggle.active .bar2 {
+        opacity: 0;
+        /* display: none; */
+      }
+      .toggle.active .bar3 {
+        transform: translateY(0) rotate(-45deg);
+      }
+    </style>
+  </head>
+  <body>
+    <div class="toggle" onclick="myButton()">
+      <div class="bar1"></div>
+      <div class="bar2"></div>
+      <div class="bar3"></div>
+    </div>
+    <!-- <div class="toggle"></div> -->
+
+    <script>
+      function myButton() {
+        document.getElementsByClassName("toggle")[0].classList.toggle("active");
+      }
+    </script>
+  </body>
+</html>
