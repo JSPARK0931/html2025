@@ -52,11 +52,14 @@
       .toggle.active .bar3 {
         transform: translateY(0) rotate(-45deg);
       }
+
+      /* *(0) < tag/1 < class/10 < id/100 < inline style(javascipt) < !important */
     </style>
   </head>
   <body>
     <!-- <div class="toggle" onclick="myButton()"> -->
-    <div class="toggle" onclick="myButton() id='han'">
+
+    <div class="toggle view" onclick="myButton()" id="han">
       <div class="bar1"></div>
       <div class="bar2"></div>
       <div class="bar3"></div>
