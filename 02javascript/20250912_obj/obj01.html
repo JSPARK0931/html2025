@@ -82,8 +82,13 @@
       const myCar1 = new MyCar("프라이드", 100);
       const myCar2 = new MyCar("그랜져", 200);
       console.log(myCar1.name, myCar1.speed);
-
-      document.getElementsByName("carname").innerHTML = myCar1.name;
+      console.log(myCar2.name, myCar2.speed);
+      //document.getElementById("carname").innerHTML = myCar1.name;
+      //document.getElementById("carname").innerHTML = myCar1.speed;
+      //document.getElementById("carname").innerHTML = myCar2.name;
+      //document.getElementById("carname").innerHTML = myCar2.speed;
+      document.getElementById("carname").innerHTML = myCar1.name + " " + myCar2.speed;
+      // document.getElementByID("carname").innerHTML = myCar1.name;
 
       const user = {
         id: 1234,
