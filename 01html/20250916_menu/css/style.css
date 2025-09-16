@@ -1,0 +1,88 @@
+.contrainer {
+  width: 1000px;
+  margin: 0 auto;
+  position: relative;
+}
+
+.navbar {
+  background: rgb(224, 222, 222);
+  position: relative;
+  z-index: 9999; /* z-index값이 높으면 상단에 배치함*/
+}
+
+h1 {
+  text-align: center;
+}
+
+.navbar .menu {
+  display: flex;
+  /* background: skyblue; */
+}
+
+.navbar .menu > li {
+  flex: 1 1 20%;
+  /*grow ,shrink 줄어든만큼 20%공동분배굄 */
+  /* flex-grow:1 : 각각이 1/5만큼 들어간다 - 배분해서 가지고옴*/
+  /* transition: 0.3s; */
+  position: relative;
+}
+
+/* .navbar .menu > li:hover{
+    flex-grow:1.2;
+} 
+*/
+
+.navbar .menu > li a {
+  /* 블럭단위요소로 묶음 : 블럭단위가 아니면 글자만 선택됨 */
+  display: block;
+  /* background: pink; */
+  text-align: center;
+  /* 블럭의 사이즈를 늘임. 5px~10px사이가 적당 */
+  padding: 10px 0;
+}
+
+/* 마우스를 올리면 pink로변함 */
+.navbar .menu > li a:hover {
+  background: grey;
+  color: white;
+  transition: 0.3s;
+}
+.navbar .menu > li:hover {
+  background: grey;
+}
+.navbar .menu > li:hover a {
+  color: white;
+}
+.navbar .menu > li:hover .sub {
+  background: grey;
+}
+
+.sub {
+  /* sub 표시안함 */
+  display: none;
+  /* sub 크기값이 없어짐 */
+  position: absolute;
+}
+
+/* .navbar .menu > li:nth-child(1) .sub {
+  display: block;
+} */
+
+/* li 에 hover시 sub display */
+.navbar .menu > li:hover .sub {
+  display: block;
+  position: absolute;
+  /* background: pink; */
+  width: 100%;
+}
+
+.navbar ul.menu > li:hover .sub {
+  display: block;
+}
+
+.visual {
+  height: 400px;
+  background: skyblue;
+  position: relative;
+  z-index: 100;
+}

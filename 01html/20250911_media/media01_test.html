@@ -6,7 +6,7 @@
     <title>Document</title>
     <link rel="stylesheet" href="css/reset.css" />
 
-    <link rel="stylesheet" href="css/style.css" />
+    <link rel="stylesheet" href="css/style_.css" />
   </head>
   <body>
     <div class="bg-color2 headerWrap">
@@ -20,7 +20,7 @@
           <li><a href="#">ONLINE</a></li>
           <li><a href="#">COMMUNITY</a></li>
         </ul>
-        <div class="toggle" onclick="myButton(),toggleEv()" id="han">
+        <div class="toggle" onclick="toggleEv()">
           <div class="bar1"></div>
           <div class="bar2"></div>
           <div class="bar3"></div>
@@ -28,33 +28,9 @@
       </div>
     </div>
     <script>
-      function myButton() {
-        // 1.    document.getElementsByClassName("toggle")[0].classList.toggle("active");
-
-        // 2.
-        const toggleElm = document.getElementById("han").classList;
-        if (toggleElm.value == "toggle") {
-          toggleElm.add("active");
-          document.getElementById("han").style.background = "green"; // set
-          //      document.getElementById("han").style.background = "green"; // set
-          //      console.log(document.getElementById("han").style.background); // get
-          //document.getElementsByClassName("bar1")[0].style.background = "red";
-          //컬러변경
-          document.getElementsByClassName("bar1")[0].style.background = "red";
-          document.getElementsByClassName("bar3")[0].style.background = "red";
-          document.querySelector(".toggle").style.background = "white";
-          //document.querySelectorAll(".toggle div").style.background = "white";
-        } else {
-          toggleElm.remove("active");
-          document.getElementById("han").style.background = "white";
-          //컬러원복
-          document.getElementsByClassName("bar1")[0].style.background = "black";
-          document.getElementsByClassName("bar3")[0].style.background = "black";
-        }
-      }
       function toggleEv() {
-        alert();
-        document.querySelector(" .menu").classList.toggle("view");
+        // alert();
+        document.querySelector(".menu").classList.toggle("view");
       }
     </script>
   </body>
