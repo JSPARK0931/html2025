@@ -2,25 +2,52 @@ const menu = [
   {
     //menu[0].menu
     menu: "company",
-    url: "#",
+    url: "http://www.naver.com",
+    sub: false,
+    submenu: [],
   },
   {
     //menu[1].menu
     menu: "product",
-    url: "#",
-    //        sub:[ {smenu},{},{}]
+    url: "http://www.daum.net",
+    sub: true,
+    submenu: [
+      {
+        menu: "p01_01",
+        url: "#",
+      },
+      {
+        menu: "p01_02",
+        url: "#",
+      },
+      {},
+    ],
   },
   {
-    //menu[2].menu
-    menu: "online",
+    menu: "oline",
     url: "#",
+    sub: false,
+    submenu: [],
   },
   {
     menu: "community",
     url: "#",
+    sub: true,
+    submenu: [
+      {
+        menu: "c01_01",
+        url: "#",
+      },
+      {
+        menu: "c01_02",
+        url: "#",
+      },
+    ],
   },
   {
     menu: "board",
     url: "#",
+    sub: false,
+    submenu: [],
   },
 ];

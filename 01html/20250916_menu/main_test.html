@@ -71,72 +71,22 @@
     const menuElm = document.querySelector(".menu");
 
     let listView = "";
-    // for (let i = 0; i < menu.length; i++) {
-    //   console.log(menu[i].menu);
-    //   console.log(menu[i].url);
-    // }
-    //배열.forEach(function(item, index){})
-    // menu.forEach(function (item, index) {
-    //   // console.log(item);
-    //   //console.log(menu[index]);
-    //   //console.log(item.menu);
-    //   console.log(menu[index].menu);
-    // });
-    // array.forEach(() => {});
-    // array.forEach((item,index) => {
-
-    // });
-
     menu.forEach((item) => {
-      console.log(item.menu);
-      // 백틱 ``안에서 변수사용하려면 ${변수}
-      //       listView += `
-      //      <li>
-      //       <a href="${item.url}">${item.menu}</a>
-      //      </li>`;
-      //
-      // 백틱 depth 2 menu
-      listView += `
-           <li>
-            <a href="${item.url}">${item.menu}</a>`;
-      if (item.sub == true) {
-        //console.log(item.menu + "submenu있음");
-        //console.log(item.submenu);
-        listView += "<ul class ='sub'>";
-        item.submenu.forEach(function (subitem) {
-          listView += `
-            <li>
-              <a href="${subitem.url}">${subitem.menu}</a>
-            </li>  
-          `;
+      listView += `<li><a href="${item.url}">${item.menu}</a>`;
+
+      if (item.sub) {
+        listView += '<ul class="sub">';
+
+        item.submenu.forEach((subItem) => {
+          listView += `<li><a href="${subItem.url}">${subItem.menu}</a></li>`;
         });
+
         listView += "</ul>";
       }
+
       listView += `</li>`;
     });
     menuElm.innerHTML = listView;
   </script>
-  <script>
-    //
-    // listView += "<li>"
-    // listView += "    <a href='"+ item.url +"'>"+item.menu+"</a>"
-    // listView += "    <ul class='sub'>"
-    // listView += "      <li><a href='#'>sub01_01</a></li>"
-    // listView += "      <li><a href='#'>sub01_02</a></li>"
-    // listView += "      <li><a href='#'>sub01_03</a></li>"
-    // listView += "      <li><a href='#'>sub01_04</a></li>"
-    // listView += "    </ul>"
-    // listView += "  </li>"
-
-    //backtick 사용
-    // listView += `<li>
-    //         <a href="#">PRODUCT</a>
-    //         <ul class="sub">
-    //           <li><a href="#">sub02_01</a></li>
-    //           <li><a href="#">sub02_02</a></li>
-    //           <li><a href="#">sub02_03</a></li>
-    //           <li><a href="#">sub02_04</a></li>
-    //         </ul>
-    //        </li>`;
-  </script>
+  <script></script>
 </html>
