@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <input type="text" class="inputData" placeholder="오늘의 할일을 입력하세요." value = "" />
+    <!-- <input type="text" class="inp" placeholder="오늘의 할일 입력" value="" /> -->
+    <button class = "inputBtn">입력</button>
+    <ul class = "todoView">
+        <li>오늘의 할일 <button class="delList" onclick ="">삭제</bttton></li>
+    </ul>
+    <button class ="delAll">전체삭제</button>
+
+    <script>
+        //변수선언
+        // inputBox데이터 element
+        const inputElem = document.querySelector(".inputData"); 
+        // const inpElem = document.querySelector(".inp");
+        // inputBox 보턴입력 element
+        const inputBtnElem = document.querySelector(".inputBtn"); 
+        // todoView list element
+        const todoViewElem = document.querySelector(".todoView");
+        // delALL 보턴입력 element
+        const delAllElem = document.querySelector(".delAll");
+        // todoList Array 
+        let listData = [];
+
+        //INPUT처리
+        inputBtnElem.addEventListener("click", function(){
+            // console.log(inputElem.value);
+            // alert(inputElem.value);
+            if (inputElem.value != 0){
+                listData.push(inputElem.value);
+                viewData();
+            } else {
+                alert("오늘의 할일을 입력하세요.")
+            }
+        });
+
+        let html = "";
+        function viewData(){
+            for(let i= 0;i<listData.length;i++){
+                console.log(listData[i]);
+                html += `<li>${i}.${listData[i]}<button class="delList" onclick ="myDel(${i})">삭제</bttton></li>`;
+                console.log(html);
+            }
+        };
+        //SET
+        todoViewElem.innerHTML = html;
+        console.log(html);
+        //viewData();
+
+
+    </script>
+</body>
+</html>

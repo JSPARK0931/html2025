@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="ko">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <style>
+      .view {
+        background: skyblue;
+      }
+      .view span {
+        background: pink;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="view">
+      <span>자료넣기</span>
+    </div>
+
+    <!-- <button onclick="insertData()">입력하기</button> -->
+    <button class="btn">입력하기</button>
+    <script>
+      function insertData() {
+        // alert("TEST");
+        // document.getElementsByClassName("view")[0].innerHTML = "안녕하세여.";
+        document.querySelector("div.view.span").innerHTML = "안녕하세요.";
+      }
+
+      //DOM.addEventListener("이벤트이름", 무명함수)
+      //DOM.addEventListener("이벤트이름", 함수이름) - 소괄호는 빼고
+      //documnet.querySelector(".btn").addEventListener("click", insertData())
+      document.querySelector(".btn").addEventListener("click", function () {
+        document.querySelector("div.view span").innerHTML = "안녕하세요.";
+      });
+
+      const btnElm = document.querySelector(".btn");
+      const insertDataElm = document.querySelector("div.view span");
+      btnElm.addEventListener("click", function () {
+        insertDataElm.innerHTML = "감사합니다..";
+      });
+
+      //제이쿼리
+      //cf) function name(){}
+      //$(".btn").click(name)
+      //$(".btn").click(function(){})
+      //$(".btn").on("click",function(){})
+    </script>
+  </body>
+</html>

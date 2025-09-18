@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="ko">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <input type="text" class="inp" placeholder="오늘의 할일 입력" value="" />
+    <button class="btn">입력</button>
+
+    <ul class="todoView">
+      <li>오늘의 할 일 <button class="del" conclick="">삭제</button></li>
+    </ul>
+
+    <button class="delAll">전체삭제</button>
+
+    <script>
+      const inpElem = document.querySelector(".inp");
+      const btnElem = document.querySelector(".btn");
+      const datListElem = document.querySelector(".todoView");
+      const delAllElem = document.querySelector(".delAll");
+
+      // let변수는 재정의 불가 cf)var의 경우는 재정의 가능
+      //let aaa = 1234;
+      //let aaa = "ABC";
+      //const는 constant variable이므로 변경이 불가; const listData=> let listData 로 변경함
+      let listData = [];
+
+      //CREATE
+      btnElem.addEventListener("click", function () {
+        console.log(inpElem.value);
+        // if (inpElem.value == "") {
+        //   alert("자료를 입력해 주세요.");
+        // } else {
+        //   // listData 배열에 add
+        //   listData.push(inpElem.value);
+        //   //입력후 input box 초기화
+        //   inpElem.Value = "";
+        // }
+        if (inpElem.value != "") {
+          listData.push(inpElem.value);
+          viewData();
+        } else {
+          alert("오늘의 할일을 입력하세요.");
+        }
+      });
+
+      //READ
+      function viewData() {
+        // console.log("자료가 보입니다.");
+        // console.log(listData);
+        let html = "";
+        for (let i = 0; i < listData.length; i++) {
+          console.log("할일" + i + ". " + listData[i]);
+          html += `<li>${i + 1}.${listData[i]}<button class="del" onclick="myDel(${i})">삭제</button></li>`;
+        }
+        //SET
+        datListElem.innerHTML = html;
+      }
+      viewData();
+      //DELETE
+      function myDel(num) {
+        // alert(num + "번째를 삭제합니다.");
+        listData.splice(num, 1);
+        viewData();
+      }
+
+      //DELETE ALL
+      delAllElem.addEventListener("click", function () {
+        listData = [];
+        html = "";
+        viewData();
+      });
+    </script>
+  </body>
+</html>
