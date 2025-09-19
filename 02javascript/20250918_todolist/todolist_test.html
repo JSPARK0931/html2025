@@ -40,19 +40,33 @@
             }
         });
 
-        let html = "";
+
         function viewData(){
+            let html = "";
             for(let i= 0;i<listData.length;i++){
                 console.log(listData[i]);
                 html += `<li>${i}.${listData[i]}<button class="delList" onclick ="myDel(${i})">삭제</bttton></li>`;
                 console.log(html);
             }
+            //SET
+            todoViewElem.innerHTML = html;
         };
         //SET
-        todoViewElem.innerHTML = html;
-        console.log(html);
-        //viewData();
-
+        //console.log(html);
+        viewData();
+        
+        //DELETE
+        function myDel(index){
+            alert( index + "번째 index 삭제");
+            listData.splice(index,1);
+            viewData();
+        }
+        //DELETE ALL
+        delAllElem.addEventListener("click", function(){
+            alert( "전체리스트 삭제");
+            listData =[];
+            viewData();
+        })
 
     </script>
 </body>
