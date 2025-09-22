@@ -28,6 +28,9 @@
       .inpMoBtn {
         display: none;
       }
+      .inpCnclBtn {
+        display: none;
+      }
     </style>
   </head>
   <body>
@@ -38,8 +41,10 @@
           <input type="text" value="" class="inp form-control me-2" placeholder="오늘의 할 일을 입력하세요" />
 
           <input type="hidden" class="numInp" />
+          <input type="hidden" class="cnclInp" />
           <button class="btn btn-primary inpBtn" style="width: 100px">입력</button>
           <button class="btn btn-danger inpMoBtn" style="width: 100px">수정</button>
+          <button class="btn btn-warning inpCnclBtn" style="width: 100px">취소</button>
         </div>
       </div>
       <div class="row px-3">
@@ -113,6 +118,7 @@
       const inpNumElem = document.querySelector(".numInp");
       const btnElem = document.querySelector(".inpBtn"); // event
       const btnMoElem = document.querySelector(".inpMoBtn"); // event
+      const btnCnclElem = document.querySelector(".inpCnclBtn"); // event
 
       //create
       btnElem.addEventListener("click", function () {
@@ -135,6 +141,20 @@
         //1 버튼 입력으로 변경
         btnElem.style.display = "block";
         btnMoElem.style.display = "none";
+        btnCnclElem.style.display = "none";
+        inpElem.value = "";
+        viewData();
+      });
+
+      //mdfy-mdfy_cncl
+      btnCnclElem.addEventListener("click", function () {
+        alert("수정이 취소되었습니다.");
+        inpElem.value = listView[inpNumElem.value].todo;
+
+        //1 버튼 입력으로 변경
+        btnElem.style.display = "block";
+        btnMoElem.style.display = "none";
+        btnCnclElem.style.display = "none";
         inpElem.value = "";
         viewData();
       });
@@ -163,17 +183,18 @@
           //     viewData += `<i class="fa-solid fa-square"  onclick="yesDone(${i})"></i>`;
           //   }
           if (item.done) {
-            viewData += `<i class="fa-solid fa-square-check " onclick="done(${i})"></i>`;
+            viewData += `<i class="fa-solid fa-square-check " onclick="done(${i})"></i>
+                         <i class="fa-solid fa-pen" onclick=""></i>
+                         <i class="fa-solid fa-trash" onclick=""></i>`;
           } else {
-            viewData += `<i class="fa-solid fa-square"  onclick="done(${i})"></i>`;
+            viewData += `<i class="fa-solid fa-square"  onclick="done(${i})"></i>
+             <i class="fa-solid fa-pen" onclick="modi(${i},'${listView[i].todo}')"></i>
+             <i class="fa-solid fa-trash" onclick="del(${i})"></i>`;
           }
 
           viewData += `
-                    
-                    <i class="fa-solid fa-pen" onclick="modi(${i},'${listView[i].todo}')"></i>
-                    <i class="fa-solid fa-trash" onclick="del(${i})"></i>
-                </div>
-                </li>
+                   </div>
+                 </li>
             `;
         });
         viewDataElem.innerHTML = viewData;
@@ -183,7 +204,9 @@
 
       //delete
       function del(index) {
-        alert(index);
+        //alert(index);
+        listView.splice(index, 1);
+        viewData();
       }
 
       //done
@@ -204,11 +227,14 @@
       }
 
       function modi(index, todo) {
-        // alert('수정' + todo);
+        //      alert("수정" + todo);
+        console.log(listView[index].todo);
+        //        inpCnclElem.value = todo;
         inpElem.value = todo;
         inpNumElem.value = index;
         btnElem.style.display = "none";
         btnMoElem.style.display = "block";
+        btnCnclElem.style.display = "block";
       }
 
       /*
