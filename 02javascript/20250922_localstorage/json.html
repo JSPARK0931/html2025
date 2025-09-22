@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html lang="ko">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <div class="name"></div>
+    <script>
+      /*
+       json : javascript object notation
+
+       XML(Extensible Markup Language)
+       -> JSON(JavaScript Object Notation)
+       -> YMAL
+
+       XML
+       <title>han</title>
+       <book>
+           <title>삼국지</title>
+           <author>일연></author>
+       </book>
+
+       JSON -> key:value
+       json data -> parsing
+       {
+           "book":{
+               "title":"삼국지",
+               "author":"일연",
+           }
+       }
+       YAML
+       fruits :
+         - apple
+         - banana
+       */
+      //   const test = {
+      //    attribution
+      //     :
+      //     ""
+      //     basic
+      //     :
+      //     {tilejson: "2.1.0", name: "", attribution: "", scheme: "xyz", minzoom: 0, maxzoom: 21,…}
+      //     bounds
+      //     :
+      //     [-180, -85.051128779807, 180, 85.051128779807]
+      //     center
+      //     :
+      //     [127.929498, 36.607695, 7]
+      //     dbasic
+      //     :
+      //     {tilejson: "2.1.0", name: "", attribution: "", scheme: "xyz", minzoom: 0, maxzoom: 21,…}
+      //     format
+      //     :
+      //     "png"
+      //     isFailed
+      //     :
+      //     false
+      //     maxzoom
+      //     :
+      //     21
+      //     minzoom
+      //     :
+      //     0
+      //     name
+      //     :
+      //     ""
+      //     satellite
+      //     :
+      //     {tilejson: "2.1.0", name: "", attribution: "", scheme: "xyz", minzoom: 0, maxzoom: 21,…}
+      //     scheme
+      //     :
+      //     "xyz"
+      //     terrain
+      //     :
+      //     {tilejson: "2.1.0", name: "", attribution: "", scheme: "xyz", minzoom: 0, maxzoom: 21,…}
+      //     tileTypes
+      //     :
+      //     ["terrain", "basic", "satellite", "dbasic"]
+      //     tilejson
+      //     :
+      //     "2.1.0"
+      //     version
+      //     :
+      //     "1758256441"
+      //     versions
+      //     :
+      //     {terrain: "1758256441", basic: "1758256441", satellite: "1758256441", dbasic: "1758256441"}
+      //   }
+
+      const mydata = {
+        name: "홍길동",
+        type: "영웅",
+        hit: {
+          num: 10,
+          type: {
+            one: "부채",
+            two: "표창",
+          },
+        },
+      };
+      console.log(mydata.name);
+      console.log(mydata.hit.type.one);
+
+      /*
+      localstorage : 데이터를 저장하려면 json문자 Data로 넣어야 함,
+                     데이터를 가지고오려면 번역
+      */
+
+      const userInfo = {
+        name: "홍길동",
+        age: "30",
+        hobby: "coding",
+      };
+
+      //저장
+      localStorage.setItem("user", JSON.stringify(userInfo));
+      console.log(localStorage);
+      console.log(localStorage.getItem("user"));
+      console.log(localStorage.key(0));
+
+      //불러오기
+      const storageData = JSON.parse(localStorage.getItem("user"));
+      console.log(storageData.name);
+
+      document.querySelector(".name").InnerHTML = storageData.name;
+    </script>
+  </body>
+</html>

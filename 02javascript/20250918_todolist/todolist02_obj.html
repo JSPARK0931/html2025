@@ -144,18 +144,10 @@
       function viewData() {
         let viewData = "";
         listView.forEach(function (item, i) {
-          viewData += `<li class="d-flex justify-content-between py-3">`;
-          if (item.done) {
-            viewData += `<div style="text-decoration: line-through">${item.todo}</div>`;
-          } else {
-            viewData += `<div>${item.todo}</div>`;
-          }
-          viewData += `<div class="d-flex gap-3">`;
-
-          // viewData += `
-          //       <li class="d-flex justify-content-between py-3">
-          //       <div>${item.todo}</div>
-          //       <div class="d-flex gap-3">`;
+          viewData += `
+                <li class="d-flex justify-content-between py-3">
+                <div>${item.todo}</div>
+                <div class="d-flex gap-3">`;
 
           //   if (item.done) {
           //     viewData += `<i class="fa-solid fa-square-check " onclick="noDone(${i})"></i>`;
