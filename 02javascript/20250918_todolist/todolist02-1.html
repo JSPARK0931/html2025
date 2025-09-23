@@ -32,18 +32,32 @@
       .inpCnclBtn {
         display: none;
       }
+      .title {
+        background: skyblue;
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+        align-items: center;
+        margin: 10px;
+        padding: 10px;
+
+        /* gap: 10px; */
+      }
     </style>
   </head>
   <body>
     <div class="container py-3">
-      <h3 class="text-center">오늘의 할 일 리스트</h3>
+      <div class="title text-center">
+        <h1>오늘의 할일 리스트</h1>
+        <p>오늘의 할일은 오늘 반드시 실천!!</p>
+      </div>
       <div class="row">
         <div class="col-md-6 offset-md-3 d-flex">
           <input type="text" value="" class="inp form-control me-2" placeholder="오늘의 할 일을 입력하세요" />
 
           <input type="hidden" class="numInp" />
           <input type="hidden" class="cnclInp" />
-          <button class="btn btn-primary inpBtn" style="width: 100px">입력</button>
+          <button class="btn btn-info inpBtn" style="width: 100px">입력</button>
           <button class="btn btn-danger inpMoBtn" style="width: 100px">수정</button>
           <button class="btn btn-warning inpCnclBtn" style="width: 100px">취소</button>
         </div>

@@ -113,12 +113,17 @@
       const inpNumElem = document.querySelector(".numInp");
       const btnElem = document.querySelector(".inpBtn"); // event
       const btnMoElem = document.querySelector(".inpMoBtn"); // event
+      const delAllElem = document.querySelector(".delAll");
 
       //create
       btnElem.addEventListener("click", function () {
         if (inpElem.value != "") {
           let value = { todo: inpElem.value, done: false }; //초기값
           listView.push(value);
+
+          //local storage 입력
+          let valueData = JSON.stringify(listView);
+          localStorage.setItem("todoData", valueData);
           inpElem.value = "";
           viewData();
         } else {
@@ -142,6 +147,12 @@
       //function
       //read
       function viewData() {
+        // localStorage의 data를 가지고온다
+        // localStogage의 data가 없을경우 error방지
+        if (localStorage.length > 0) {
+          let localData = localStorage.getItem("todoData");
+          listView = JSON.parse(localData);
+        }
         let viewData = "";
         listView.forEach(function (item, i) {
           viewData += `
@@ -177,20 +188,21 @@
       function del(index) {
         alert(index);
         listView.splice(index, 1);
+        localStorage.removeItem("todoList", listView[index]);
         viewData();
       }
 
       //done
-      function yesDone(index) {
-        console.log(index);
-        listView[index].done = true;
-        viewData();
-      }
+      // function yesDone(index) {
+      //   console.log(index);
+      //   listView[index].done = true;
+      //   viewData();
+      // }
 
-      function noDone(index) {
-        listView[index].done = false;
-        viewData();
-      }
+      // function noDone(index) {
+      //   listView[index].done = false;
+      //   viewData();
+      // }
 
       function done(index) {
         listView[index].done = !listView[index].done;
@@ -211,6 +223,8 @@
       - done:true 이면 글자, 글자를 text-decoration:line-through
       - done:false 원상복구
       - 수정시 취소번튼 추가
+      - done체크, todo title 수정, todo삭제, 전체삭제, localStorage반영
+      - Application에서 확인
       */
     </script>
   </body>
