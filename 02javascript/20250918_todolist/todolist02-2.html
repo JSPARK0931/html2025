@@ -68,17 +68,21 @@
         <div class="col-md-6 offset-md-3">
           <ul class="viewList">
             <li class="d-flex justify-content-between py-3">
-              <div>자바</div>
-              <div class="d-flex gap-3">
+              <div class="d-flex gap-5">
                 <i class="fa-solid fa-square-check"></i>
+                <div class="item" style="text-decoration: line-through">자바</div>
+              </div>
+              <div class="d-flex gap-3">
                 <i class="fa-solid fa-pen"></i>
                 <i class="fa-solid fa-trash"></i>
               </div>
             </li>
-            <li class="d-flex justify-content-between">
-              <div>파이썬</div>
+            <li class="d-flex justify-content-between py-3">
+              <div class="d-flex gap-5">
+                <i class="fa-solid fa-square-check"></i>
+                <div class="item" style="text-decoration: line-through">파이썬</div>
+              </div>
               <div class="d-flex gap-3">
-                <i class="fa-solid fa-square"></i>
                 <i class="fa-solid fa-pen"></i>
                 <i class="fa-solid fa-trash"></i>
               </div>
@@ -195,13 +199,30 @@
         }
 
         let viewData = "";
-
+        // <li class="d-flex justify-content-between py-3">
+        //   <div class="d-flex gap-5">
+        //     <i class="fa-solid fa-square-check"></i>
+        //     <div class="item" style="text-decoration: line-through">
+        //       파이썬
+        //     </div>
+        //   </div>
+        //   <div class="d-flex gap-3">
+        //     <i class="fa-solid fa-pen"></i>
+        //     <i class="fa-solid fa-trash"></i>
+        //   </div>
+        // </li>;
         listView.forEach(function (item, i) {
-          viewData += `<li class="d-flex justify-content-between py-3">`;
+          viewData += `<li class="d-flex justify-content-between align-content-center py-3">
+              <div class="d-flex gap-5">
+            `;
           if (item.done) {
-            viewData += `<div style="text-decoration: line-through">${item.todo}</div>`;
+            viewData += `<i class="fa-solid fa-square-check"  onclick="done(${i})"></i>
+                         <div style="text-decoration: line-through">${item.todo}</div>
+                       </div> `;
           } else {
-            viewData += `<div>${item.todo}</div>`;
+            viewData += `<i class="fa-solid fa-square"  onclick="done(${i})"></i>
+                         <div>${item.todo}</div>
+                       </div>`;
           }
           viewData += `<div class="d-flex gap-3">`;
 
@@ -216,20 +237,19 @@
           //     viewData += `<i class="fa-solid fa-square"  onclick="yesDone(${i})"></i>`;
           //   }
           if (item.done) {
-            viewData += `<i class="fa-solid fa-square-check " onclick="done(${i})"></i>
-                              <font color="grey"><i class="fa-solid fa-pen" onclick=""></i></font>
+            viewData += `     <font color="grey"><i class="fa-solid fa-pen" onclick=""></i></font>
                               <font color="grey"><i class="fa-solid fa-trash" onclick=""></i></font>`;
           } else {
-            viewData += `<i class="fa-solid fa-square"  onclick="done(${i})"></i>
-                  <i class="fa-solid fa-pen" onclick="modi(${i},'${listView[i].todo}')"></i>
-                  <i class="fa-solid fa-trash" onclick="del(${i})"></i>`;
+            viewData += `     <i class="fa-solid fa-pen" onclick="modi(${i},'${listView[i].todo}')"></i>
+                              <i class="fa-solid fa-trash" onclick="del(${i})"></i>`;
           }
 
           viewData += `
                         </div>
-                      </li>
+                     </li>
                  `;
         });
+        console.log(viewData);
         viewDataElem.innerHTML = viewData;
       }
 

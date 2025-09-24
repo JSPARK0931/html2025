@@ -7,13 +7,12 @@
   </head>
   <body>
     <script>
-      // array좌표값을 카피 : arr/arr1은 함께 움직임
+      // 얕은복사 : array좌표값을 카피 : arr/arr1은 함께 움직임
       let arr_1 = [1, 2, 3, 4];
       let arr_2 = arr_1;
 
-      // arr 원데이터를 카피 : arr/arr1은 별도로 움직임
-      let arr = [1, 2, 3, 4];
-      let arr1 = [...arr];
+      // 깊은복사 : arr 원데이터를 카피 : arr/arr1은 별도로 움직임
+      let arr_3 = [...arr_1];
     </script>
   </body>
 </html>

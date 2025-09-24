@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="ko">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <script>
+      function greet(name, callback) {
+        console.log("너의 이름은 " + name);
+        console.log(`너의 이름은 ${name} 입니다.`);
+
+        callback();
+      }
+
+      greet("홍길동", function () {
+        console.log("만나서 반갑습니다.");
+      });
+
+      //cf)비슷한 구조
+      //배열.forEach(function(item, index){})
+      //setTimeout(function(){})
+      //delAllElem.addEventListener("click", function (){})
+
+      // WEB API로 가서 실행됨, A실행후 B실행하려면 callback함수를 사용해야함
+      //   setTimeout(function () {
+      //     console.log("setTimeout실행됨"); //A
+      //   }, 2000);
+      //   console.log("바로실행"); //B
+
+      function getUser(id, callback) {
+        setTimeout(function () {
+          //          cb("홍길동");
+          callback({ id: id, name: "홍길동" });
+        }, 3000);
+      }
+
+      function getOrder(userId, callback) {
+        setTimeout(function () {
+          callback("상품주문완료");
+        }, 3000);
+      }
+
+      //let user ={id:id, name:'홍길동'}
+      getUser(1, function (user) {
+        // console.log('사용자', user);
+        console.log("사용자:" + user.id + "," + user.name);
+        getOrder(user, function (order) {
+          console.log(user.id + user.name + order);
+        });
+      });
+    </script>
+  </body>
+</html>
