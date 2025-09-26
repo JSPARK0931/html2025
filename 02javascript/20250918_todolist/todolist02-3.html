@@ -193,7 +193,11 @@
         // localStogage의 data가 없을경우 error방지
         if (localStorage.length > 0) {
           let localData = localStorage.getItem("todoData");
-          listView = JSON.parse(localData);
+          if (localData != null) {
+            listView = JSON.parse(localData);
+          } else {
+            listView = [];
+          }
         } else {
           listView = [];
         }
@@ -211,11 +215,11 @@
         //     <i class="fa-solid fa-trash"></i>
         //   </div>
         // </li>;
+        //        console.log(listView.length);
         listView.forEach(function (item, i) {
           viewData += `<li class="d-flex justify-content-between align-content-center py-3">
               <div class="d-flex gap-5">
             `;
-
           if (item.done) {
             viewData += `<i class="fa-solid fa-square-check"  onclick="done(${i})"></i>
                          <div style="text-decoration: line-through">${item.todo}</div>
@@ -227,6 +231,16 @@
           }
           viewData += `<div class="d-flex gap-3">`;
 
+          // viewData += `
+          //       <li class="d-flex justify-content-between py-3">
+          //       <div>${item.todo}</div>
+          //       <div class="d-flex gap-3">`;
+
+          //   if (item.done) {
+          //     viewData += `<i class="fa-solid fa-square-check " onclick="noDone(${i})"></i>`;
+          //   } else {
+          //     viewData += `<i class="fa-solid fa-square"  onclick="yesDone(${i})"></i>`;
+          //   }
           if (item.done) {
             viewData += `     <font color="grey"><i class="fa-solid fa-pen" onclick=""></i></font>
                               <font color="grey"><i class="fa-solid fa-trash" onclick=""></i></font>`;

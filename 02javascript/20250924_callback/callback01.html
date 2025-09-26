@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="ko">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <script>
+      /*
+      console.log("응답1");
+      console.log("응답2");
+      //비동기 3초 : browser객체 WEB API로 보냄, 3초기다린후 실행됨
+      setTimeout(function () {
+        console.log("응답3");
+      }, 3000);
+
+      console.log("응답4");
+      console.log("응답5");
+       */
+
+      function fn1(data) {
+        console.log("1");
+        data();
+      }
+      function fn2() {
+        console.log("2");
+      }
+
+      //함수실행시 무명함수를 사용하거나, 함수명만 사용함
+      //   setTimeout(fn1, 3000);
+      //   fn2();
+
+      //   setTimeout(function fn3() {
+      //     console.log(10);
+      //   }, 3000);
+
+      //   setTimeout(fn1, 3000);
+      fn1(fn2);
+      //   fn1(function () {
+      //     console.log(2);
+      //   });
+    </script>
+  </body>
+</html>
