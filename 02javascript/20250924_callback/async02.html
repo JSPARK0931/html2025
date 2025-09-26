@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="ko">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <script>
+      function fn1(number) {
+        // setTimeout(function(){
+        //   return number;
+        // },1000);
+        const promise = new Promise(function (resolve, reject) {
+          setTimeout(function () {
+            // resolve(number);
+            reject(number);
+          }, 1000);
+        });
+        return promise;
+      }
+
+      // fn1(1000).then(function (num) {
+      //   console.log(num);
+      // });
+
+      async function test() {
+        console.log("1");
+        try {
+          let time = await fn1(1000);
+          console.log(time);
+        } catch (error) {
+          console.error("error");
+        }
+        // let time = await fn1(1000);
+        // console.log(time);
+        // console.log("2");
+        // time = await fn1(time + 1000);
+        // console.log(time);
+        // await fn1(2000);
+        // console.log("3");
+      }
+
+      test();
+    </script>
+  </body>
+</html>

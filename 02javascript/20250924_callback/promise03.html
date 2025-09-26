@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="ko">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <script>
+      function fn1(num) {
+        const promise = new Promise(function (resolve) {
+          setTimeout(function () {
+            resolve(num);
+          }, 1000);
+        });
+
+        return promise;
+
+        // return new Promise(function (resolve) {
+        //   resolve(num);
+        // });
+      }
+
+      fn1(1000)
+        .then(function (num1) {
+          console.log(num1);
+          return fn1(num1 + 100);
+        })
+        .then(function (num2) {
+          console.log(num2);
+        });
+    </script>
+  </body>
+</html>

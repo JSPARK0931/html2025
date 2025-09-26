@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="ko">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <script>
+      // function fn1(number){
+      //   //return number;
+      //   return new Promise(function (resolve){
+      //     resolve(number);
+      //   });
+      // }
+
+      async function fn1(number) {
+        // setTimeout(function(){
+        //   return number;
+        // },1000);
+        const promise = new Promise(function (resolve) {
+          setTimeout(function () {
+            resolve(number);
+          }, 1000);
+        });
+        return promise;
+      }
+
+      console.log("start");
+      fn1(1000)
+        .then(function (num) {
+          console.log(num);
+          return fn1(num + 100);
+        })
+        .then(function (num) {
+          console.log(num);
+          return fn1(num + 5);
+        })
+        .then(function (num) {
+          console.log(num);
+          console.log("end");
+          return fn1(num + 5);
+        })
+
+        .catch(function (num) {
+          console.log(num);
+        });
+      //console.log("end");
+    </script>
+  </body>
+</html>
