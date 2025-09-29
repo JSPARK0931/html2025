@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="ko">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.8/css/bootstrap.min.css"
+      integrity="sha512-2bBQCjcnw658Lho4nlXJcc6WkV/UxpE/sAokbXPxQNGqmNdQrWqtw26Ns9kFF/yG792pKR1Sx8/Y1Lf1XN4GKA=="
+      crossorigin="anonymous"
+      referrerpolicy="no-referrer"
+    />
+    <style>
+      ul,
+      li {
+        list-style: none;
+        padding: 0;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="container py-3">
+      <h3>블로그 리스트</h3>
+      <hr />
+
+      <ul class="viewList">
+        <li class="d-flex flex-column flex-md-row justify-content-between">
+          <div class="d-flex gap-2">
+            <div>1</div>
+            <div>제목</div>
+          </div>
+          <div class="d-flex align-self-end gap-2">
+            <div>한성용</div>
+            <div>test@naver.com</div>
+          </div>
+        </li>
+        <li><hr /></li>
+      </ul>
+      <div class="d-flex justify-content-end">
+        <div class="btn btn-primary">글쓰기</div>
+      </div>
+    </div>
+    <script>
+      const viewListElem = document.querySelector(".viewList");
+
+      //pageNation의 기초
+      async function fn1(limit, size) {
+        const res = await fetch("https://jsonplaceholder.typicode.com/posts"); //asc
+        //const res = await fetch("https://jsonplaceholder.typicode.com/posts?_sort=id&_order=desc"); //desc
+        const data = await res.json();
+
+        //let size = 5;
+        let sData = limit;
+        let eData = limit + size;
+        //console.log(data);
+        let viewData = "";
+
+        for (let i = sData; i < eData; i++) {
+          const post = data[i];
+          //  console.log(`순번 ${i}:` + data[i].id);
+          //  console.log(post);
+
+          const userRes = await fetch(`https://jsonplaceholder.typicode.com/users/${post.userId}`);
+          const user = await userRes.json();
+
+          //  console.log(user);
+          console.log("no :" + i);
+          console.log("제목 :" + post.title);
+          console.log("이름 :" + user.name);
+          console.log("email:" + user.email);
+          console.log("-----------------------------------------");
+
+          viewData += `<li class="d-flex flex-column flex-md-row justify-content-between">
+                        <div class="d-flex gap-2">
+                            <div>${post.id}</div>
+                            <div>${post.title}</div>
+                        </div>
+                        <div class="d-flex align-self-end gap-2">
+                            <div>${user.name}</div>
+                            <div>${user.email}</div>
+                        </div>
+                        </li>
+                        <li><hr /></li>`;
+        }
+        viewListElem.innerHTML = viewData;
+      }
+      fn1(10, 5);
+    </script>
+  </body>
+</html>

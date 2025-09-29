@@ -8,6 +8,7 @@
   <body>
     <div class="title"></div>
     <div class="id"></div>
+    <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
     <script>
       let mydata = [];
       async function getPost() {
@@ -21,8 +22,21 @@
         document.querySelector(".title").innerHTML = mydata[3].title;
         document.querySelector(".id").innerHTML = mydata[3].userId;
       }
-
       getPost();
+
+      let mydata2;
+      async function getTodo() {
+        try {
+          const res = await axios.get(`https://jsonplaceholder.typicode.com/todos`);
+          console.log("GET 성공:", res.data);
+          console.log(res);
+          mydata2 = res.data;
+        } catch (error) {
+          console.error("에러:", error.message);
+        }
+      }
+
+      getTodo();
     </script>
   </body>
 </html>
