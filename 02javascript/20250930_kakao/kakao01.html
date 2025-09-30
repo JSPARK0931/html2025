@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="ko">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <script
+      src="https://cdnjs.cloudflare.com/ajax/libs/axios/1.11.0/axios.min.js"
+      integrity="sha512-h9644v03pHqrIHThkvXhB2PJ8zf5E9IyVnrSfZg8Yj8k4RsO4zldcQc4Bi9iVLUCCsqNY0b4WXVV4UB+wbWENA=="
+      crossorigin="anonymous"
+      referrerpolicy="no-referrer"
+    ></script>
+  </head>
+  <body>
+    <script>
+      async function kakaosearch(query) {
+        try {
+          //const res = await axios.get('',{})
+          const res = await axios.get(`https://dapi.kakao.com/v2/search/web?query=${query}`, {
+            headers: {
+              Authorization: "KakaoAK 95233250fb4a994f04e79727bfb99fdc",
+            },
+            // params: {
+            //     query: query
+            // },
+          });
+          console.log(res.data);
+        } catch (error) {}
+      }
+
+      kakaosearch("손흥민");
+    </script>
+  </body>
+</html>
