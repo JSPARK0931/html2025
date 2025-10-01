@@ -22,11 +22,11 @@
     <div class="container">
       <h3>글내용보기</h3>
       <hr />
-      <div>Number : <span class="num"></span></div>
+      <div>No : <span class="num"></span></div>
       <div>Name : <span class="name"></span> / <span class="email"></span></div>
       <div>Title : <span class="title"></span></div>
       <div>
-        <p>Contents</p>
+        <p>Contents :</p>
         <p class="content"></p>
       </div>
       <div class="d-flex justify-content-end">
@@ -39,14 +39,24 @@
       //?id=11&name=Ervin%20Howell&userId=2&email=Shanna@melissa.tv
       const params = new URLSearchParams(location.search);
       const postid = Number(params.get("id"));
+      const name = params.get("name");
+      const userId = params.get("userId");
+      const email = params.get("email");
 
-      console.log(postid);
+      console.log(postid + "," + name + "," + userId + "," + email);
 
       async function ContentsView(postid) {
         const viewData = await axios.get(`https://jsonplaceholder.typicode.com/posts/${postid}`);
+        console.log(viewData.data);
+        //console.log(userData);
+        //console.log(viewData.data);
+        document.querySelector(".num").innerHTML = viewData.data.id;
+        document.querySelector(".name").innerHTML = name;
+        document.querySelector(".email").innerHTML = email;
+        document.querySelector(".title").innerHTML = viewData.data.title;
+        document.querySelector(".content").innerHTML = viewData.data.body;
       }
-      //console.log(viewData.data);
-      //console.log(userData);
+
       ContentsView(postid);
     </script>
   </body>

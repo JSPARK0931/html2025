@@ -16,15 +16,18 @@
       async function kakaosearch(query) {
         try {
           //const res = await axios.get('',{})
-          const res = await axios.get(`https://dapi.kakao.com/v2/search/web?query=${query}`, {
+          //const res = await axios.get(`https://dapi.kakao.com/v2/search/web?query=${query}&size=50`, {
+          const res = await axios.get(`https://dapi.kakao.com/v2/search/web`, {
             headers: {
               Authorization: "KakaoAK 95233250fb4a994f04e79727bfb99fdc",
             },
-            // params: {
-            //     query: query
-            // },
+            params: {
+              query: query,
+              size: 50,
+            },
           });
-          console.log(res.data);
+          //console.log(res.data);
+          console.log(res.data.documents);
         } catch (error) {}
       }
 

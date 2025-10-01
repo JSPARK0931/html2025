@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html lang="ko">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <!-- <script
+      src="https://cdnjs.cloudflare.com/ajax/libs/axios/1.11.0/axios.min.js"
+      integrity="sha512-h9644v03pHqrIHThkvXhB2PJ8zf5E9IyVnrSfZg8Yj8k4RsO4zldcQc4Bi9iVLUCCsqNY0b4WXVV4UB+wbWENA=="
+      crossorigin="anonymous"
+      referrerpolicy="no-referrer"
+    ></script> -->
+    <!-- <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.8/css/bootstrap.min.css"
+      integrity="sha512-2bBQCjcnw658Lho4nlXJcc6WkV/UxpE/sAokbXPxQNGqmNdQrWqtw26Ns9kFF/yG792pKR1Sx8/Y1Lf1XN4GKA=="
+      crossorigin="anonymous"
+      referrerpolicy="no-referrer"
+    /> -->
+    <script src="../js/axios.min.js"></script>
+    <link rel="stylesheet" href="../css/bootstrap.min.css" />
+    <style>
+      ul,
+      li {
+        list-style: none;
+        padding: 0;
+      }
+      .wrap {
+        /* 글자수가 많아지면 ...으료 표시됨 */
+        white-space: nowrap;
+        overflow: hidden;
+        text-overflow: ellipsis;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="container py-3">
+      <h1 class="mb-3 text-center">카카오 검색</h1>
+      <div class="row">
+        <div class="offset-md-3 col-md-6">
+          <form id="searchform" class="d-flex gap-2 mb-3">
+            <input type="text" name="search" class="form-control search" placeholder="검색어를입력하세요" />
+            <button class="btn btn-primary" style="width: 100px">검색</button>
+          </form>
+          <div id="results" class="list-group">
+            <ul>
+              <li class="text-center py-5 bg-secondary rounded">
+                <!-- <li>
+                <h4>
+                  <a href="#" class="nav-link wrap"
+                    >Lorem, ipsum dolor sit amet consectetur adipisicing elit. Dicta, animi!</a
+                  >
+                </h4>
+                <p>
+                  Lorem ipsum dolor sit amet consectetur adipisicing elit. Omnis placeat, eos sunt corporis quia quaerat
+                  repellat vitae praesentium perspiciatis, architecto tenetur voluptatem tempore itaque laudantium
+                  dolorem distinctio accusantium ex officiis.
+                </p>
+                <p class="d-flex justify-content-end small">
+                  <span>2025-09-15</span>
+                </p> -->
+                검색어를 입력하세요.
+              </li>
+            </ul>
+          </div>
+        </div>
+      </div>
+      <!-- <form action="test.html"> -->
+    </div>
+    <script>
+      //   document.getElementById("searchform").addEventListener("submit",function(){});
+      document.getElementById("searchform").addEventListener("submit", async function (e) {
+        e.preventDefault();
+
+        const query = document.querySelector(".search").value.trim();
+        if (!query) {
+          alert("검색어를 입력하세요");
+        }
+        console.log(query);
+
+        try {
+          //const res = await axios.get('url',{headers:{}, params:{} })
+          const res = await axios.get(`https://dapi.kakao.com/v2/search/web`, {
+            headers: {
+              Authorization: "KakaoAK 95233250fb4a994f04e79727bfb99fdc",
+            },
+            params: {
+              query: query,
+              size: 10,
+            },
+          });
+          //console.log(res);
+          //console.log(res.data);
+
+          const data = res.data;
+          let viewData = "";
+          data.documents.forEach(function (item) {
+            // console.log(item.title);
+            viewData += `
+                        <li>
+                            <h4>
+                            <a href="${item.url}" target="_blank" class="nav-link wrap">
+                                ${item.title}</a>
+                            </h4>
+                            <p>
+                            ${item.contents}
+                            </p>
+                            <p class="d-flex justify-content-end small">
+                            <span>${item.datetime.split("T")[0]}</span>
+                            </p>
+                        </li>
+                        `;
+            console.log(viewData);
+            document.querySelector("#results>ul").innerHTML = viewData;
+          });
+        } catch (error) {}
+      });
+
+      //   async function kakaosearch(query) {
+      //     try {
+      //       //const res = await axios.get('',{})
+      //       //const res = await axios.get(`https://dapi.kakao.com/v2/search/web?query=${query}&size=50`, {
+      //       const res = await axios.get(`https://dapi.kakao.com/v2/search/web`, {
+      //         headers: {
+      //           Authorization: "KakaoAK 95233250fb4a994f04e79727bfb99fdc",
+      //         },
+      //         params: {
+      //           query: query,
+      //           size: 50,
+      //         },
+      //       });
+      //       //console.log(res.data);
+      //       console.log(res.data.documents);
+      //     } catch (error) {}
+      //   }
+
+      // kakaosearch("손흥민");
+    </script>
+  </body>
+</html>
