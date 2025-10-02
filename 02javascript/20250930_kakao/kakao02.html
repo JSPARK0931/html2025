@@ -80,7 +80,8 @@
 
         try {
           //const res = await axios.get('url',{headers:{}, params:{} })
-          const res = await axios.get(`https://dapi.kakao.com/v2/search/web`, {
+          //const res = await axios.get(`https://dapi.kakao.com/v2/search/web`, {
+          const { data } = await axios.get(`https://dapi.kakao.com/v2/search/web`, {
             headers: {
               Authorization: "KakaoAK 95233250fb4a994f04e79727bfb99fdc",
             },
@@ -92,7 +93,7 @@
           //console.log(res);
           //console.log(res.data);
 
-          const data = res.data;
+          //const data = res.data;
           let viewData = "";
           data.documents.forEach(function (item) {
             // console.log(item.title);

@@ -1,0 +1,215 @@
+<!DOCTYPE html>
+<html lang="ko">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+
+    <script src="../js/axios.min.js"></script>
+    <link rel="stylesheet" href="../css/bootstrap.min.css" />
+    <style>
+      ul,
+      li {
+        list-style: none;
+        padding: 0;
+      }
+      .wrap {
+        /* 글자수가 많아지면 ...으료 표시됨 */
+        white-space: nowrap;
+        overflow: hidden;
+        text-overflow: ellipsis;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="container py-3">
+      <h1 class="mb-3 text-center">카카오 블로그 검색</h1>
+      <div class="row">
+        <div class="offset-md-3 col-md-6">
+          <form id="searchform" class="d-flex gap-2 mb-3">
+            <input type="text" name="search" class="form-control search" placeholder="검색어를입력하세요" />
+            <button class="btn btn-primary" style="width: 100px">검색</button>
+          </form>
+          <div id="results" class="list-group">
+            <ul>
+              <li class="text-center py-5 bg-secondary rounded">
+                <!-- <li>
+                <h4>
+                  <a href="#" class="nav-link wrap"
+                    >Lorem, ipsum dolor sit amet consectetur adipisicing elit. Dicta, animi!</a
+                  >
+                </h4>
+                <p>
+                  Lorem ipsum dolor sit amet consectetur adipisicing elit. Omnis placeat, eos sunt corporis quia quaerat
+                  repellat vitae praesentium perspiciatis, architecto tenetur voluptatem tempore itaque laudantium
+                  dolorem distinctio accusantium ex officiis.
+                </p>
+                <p class="d-flex justify-content-end small">
+                  <span>2025-09-15</span>
+                </p> -->
+                검색어를 입력하세요.
+              </li>
+            </ul>
+          </div>
+          <nav aria-label="Page navigation example" class="d-flex justify-content-center">
+            <ul class="pagination">
+              <!-- <li class="page-item"><a class="page-link" href="#">Previous</a></li> -->
+              <!-- <li class="page-item"><a class="page-link active" href="#">1</a></li>
+              <li class="page-item"><a class="page-link" href="#">2</a></li>
+              <li class="page-item"><a class="page-link" href="#">3</a></li>
+              <li class="page-item"><a class="page-link" href="#">4</a></li>
+              <li class="page-item"><a class="page-link" href="#">5</a></li> -->
+              <!-- <li class="page-item"><a class="page-link" href="#">Next</a></li> -->
+            </ul>
+          </nav>
+        </div>
+      </div>
+
+      <!-- <form action="test.html"> -->
+    </div>
+    <script>
+      let page = 1;
+      let listCnt = 3;
+      let pagerCnt = 5;
+      let totalRecord = 0; //kakao meta
+      let totalPage = 0;
+      //let query = "";
+
+      //   document.getElementById("searchform").addEventListener("submit",function(){});
+      document.getElementById("searchform").addEventListener("submit", function (e) {
+        e.preventDefault();
+
+        const query = document.querySelector(".search").value.trim();
+        if (!query) {
+          alert("검색어를 입력하세요");
+        }
+        //console.log(query);
+        page = 1;
+        searchData(query, page);
+      });
+
+      async function searchData(query, page) {
+        console.log(query, page);
+        try {
+          //const res = await axios.get('url',{headers:{}, params:{} })
+          // 1. web search
+          //const res = await axios.get(`https://dapi.kakao.com/v2/search/web`, {
+          // 2. blog search
+          const res = await axios.get(`https://dapi.kakao.com/v2/search/blog`, {
+            //const { data } = await axios.get(`https://dapi.kakao.com/v2/search/web`, {
+            headers: {
+              Authorization: "KakaoAK 95233250fb4a994f04e79727bfb99fdc",
+            },
+            params: {
+              query: query,
+              page: page,
+              size: listCnt,
+            },
+          });
+          //console.log(res);
+          console.log(res.data);
+
+          const data = res.data;
+          let viewData = "";
+          data.documents.forEach(function (item) {
+            // console.log(item.title);
+            // 1. 블로그 검색용
+            viewData += `
+                        <li>
+                            <h4>
+                            <a href="${item.url}" target="_blank" class="nav-link wrap">
+                                ${item.title}</a>
+                            </h4>
+                            <div class="d-flex gap-3"><img src="${item.thumbnail}" class="rounded">
+                                <p>${item.contents}</p>
+                            </div>
+                            <p class="d-flex justify-content-end small">
+                            <span>${item.datetime.split("T")[0]}</span>
+                            </p>
+                        </li>
+                        `;
+            // viewData += `
+            //              <li>
+            //                 <h4>
+            //                   <a href="${item.url}" target="_blank" class="nav-link wrap"
+            //                     >${item.title}</a
+            //                   >
+            //                 </h4>
+            //                 <div class="d-flex gap-3"><img src="${item.thumbnail}" class="rounded">
+            //                   <p>${item.contents}</p>
+            //                 </div>
+            //                 <p class="d-flex justify-content-end small">
+            //                   <span>${item.datetime.split("T")[0]}</span>
+            //                 </p>
+            //              </li>
+            //               `;
+
+            // 2.web 검색용
+            // viewData += `
+            //             <li>
+            //                 <h4>
+            //                 <a href="${item.url}" target="_blank" class="nav-link wrap">
+            //                     ${item.title}</a>
+            //                 </h4>
+            //                 <p>
+            //                 ${item.contents}
+            //                 </p>
+            //                 <p class="d-flex justify-content-end small">
+            //                 <span>${item.datetime.split("T")[0]}</span>
+            //                 </p>
+            //             </li>
+            //             `;
+            //  console.log(viewData);
+            document.querySelector("#results>ul").innerHTML = viewData;
+            let is_end = data.meta.is_end;
+            console.log("마지막:" + is_end);
+
+            pagination(query, page, is_end);
+          });
+        } catch (error) {}
+      }
+      function pagination(query, page, isEnd) {
+        const pageView = document.querySelector(".pagination");
+        pageView.innerHTML = "";
+
+        let startPage = Math.floor((page - 1) / pagerCnt) * pagerCnt + 1;
+        // (5-1)/5
+        let endPage = startPage + pagerCnt - 1;
+
+        // if (endPage > totalPage){
+        //   endPage = totalPage;
+        // }
+
+        console.log(startPage, endPage);
+
+        let pageNum = "";
+        //previous button
+        pageNum += `<li class="page-item ${
+          page == 1 ? "disabled" : ""
+        }"><a class="page-link" href="#" onclick="searchData('${query}',${page - 1})">Previous</a></li>`;
+        for (let i = startPage; i <= endPage; i++) {
+          //console.log(i);
+          pageNum += `<li class="page-item ${
+            i == page ? "active" : ""
+          }"><a class="page-link" href="#" onclick="searchData('${query}',${i})">${i}</a></li>
+          `;
+          // if (i==page){
+          //   pageNum += `<li class="page-item active">${i}</li>`;
+          // }
+          // else {
+          //   pageNum += `<li class="page-item">${i}</li>`;
+          // }
+        }
+        //next button
+        pageNum += `<li class="page-item ${
+          isEnd == true ? "disabled" : ""
+        }"><a class="page-link" href="#" onclick="searchData('${query}',${page + 1})">Next</a></li>`;
+        pageView.innerHTML = pageNum;
+      }
+
+      //pagination();
+
+      //searchData("손흥민", 4);
+    </script>
+  </body>
+</html>
