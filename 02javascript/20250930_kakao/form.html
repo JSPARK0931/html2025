@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="ko">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <!-- <form action="up.jsp" method="get"> -->
+    <form method="get" id="form">
+      <input type="text" name="yourname" value="" placeholder="이름을 입력하세요" />
+      <input type="text" name="year" value="" placeholder="년도를 입력하세요" />
+      <input type="text" name="content" value="" placeholder="컨텐츠를 입력하세요" />
+      <input type="hidden" name="book" value="mybook" />
+      <button type="submit" class="formBtn">글작성완료</button>
+    </form>
+
+    <!-- form문서에서 Enter를 누르면 화면이 새로고침됨
+     새로고침을 제거하기위해 event,preventDefault()를 사용하여 새로고침을 방지
+     ( form문서의 기본기능을 제거, a tag의 화면이동이 기본기능 )
+     -->
+    <script>
+      //    document.getElementById("form").addEventListener('submit', function(){})
+      // document.getElementById("form").addEventListener('submit', function(){
+      //     alert("글작성합니다...")
+      // })
+      document.querySelector("#form").addEventListener("keydown", function (event) {
+        event.preventDefault();
+        console.log(event.key);
+
+        // if(event.key == "Enter") {
+        //     akert("Enter가 s눌림")
+        // }
+      });
+    </script>
+  </body>
+</html>

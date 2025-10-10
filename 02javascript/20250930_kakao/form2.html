@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="ko">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <input type="text" class="inp" placeholder="카테고리" />
+    <input type="text" class="inp" name="user" placeholder="이름" />
+    <input type="hidden" name="book" value="나의 성공기" />
+    <button class="dataBtn">자료전송</button>
+
+    <script>
+      const inpElem = document.querySelector(".inp");
+      const userElem = document.querySelector('input[name="user"]');
+      const bookElem = document.querySelector('input[name="book"]');
+      const dataElem = document.querySelector(".dataBtn");
+
+      const myObj = {
+        name: "",
+        cat: "",
+        book: "",
+      };
+
+      dataElem.addEventListener("click", function () {
+        console.log(inpElem.value);
+        console.log(userElem.value);
+        console.log(bookElem.value);
+
+        myObj.name = userElem.value;
+        myObj.cat = inpElem.value;
+        myObj.book = bookElem.value;
+
+        console.log(myObj);
+
+        if (inpElem.value.trim() == "") {
+          alert("꼭 작성하셔야 됩니다.");
+          inpElem.focus();
+        }
+      });
+
+      inpElem.addEventListener("keydown", function (e) {
+        if (e.key == "Enter") {
+          if (inpElem.value == "") {
+            alert("꼭 작성하셔야 됩니다.");
+            inpElem.focus();
+          }
+          console.log(inpElem.value);
+        }
+      });
+    </script>
+  </body>
+</html>
