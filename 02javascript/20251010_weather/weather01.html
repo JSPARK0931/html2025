@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="ko">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <script
+      src="https://cdnjs.cloudflare.com/ajax/libs/axios/1.11.0/axios.min.js"
+      integrity="sha512-h9644v03pHqrIHThkvXhB2PJ8zf5E9IyVnrSfZg8Yj8k4RsO4zldcQc4Bi9iVLUCCsqNY0b4WXVV4UB+wbWENA=="
+      crossorigin="anonymous"
+      referrerpolicy="no-referrer"
+    ></script>
+  </head>
+  <body>
+    <div>
+      이곳에 좌표값은
+      <button class="posBtn">좌표값</button><br />
+      현재위치 - <span class="pos">0,0</span><br />
+      <span class="location"></span>위치의 날씨 -
+      <span class="weather"> 온도 : <span class="temp"></span> </span>
+      <img src="https://openweathermap.org/img/wn/01d@2x.png" alt="" class="icon" />
+    </div>
+    <script>
+      //   navigator.geolocation.getCurrentPosition(function (position) {
+      //     console.log(position.coords.latitude);
+      //     console.log(position.coords.longitude);
+      //   });
+
+      const API_KEY = "cdd8836d762fa089c19a028eff6b2067";
+      //   navigator.geolocation.getCurrentPosition(function (position) {
+      //     console.log(position.coords.latitude);
+      //     console.log(position.coords.longitude);
+      //   });
+
+      //    const API_KEY = '';
+      const posBtnElem = document.querySelector(".posBtn");
+      const posElem = document.querySelector(".pos");
+      const iconElem = document.querySelector(".icon");
+
+      posBtnElem.addEventListener("click", function () {
+        // alert('클릭');
+        navigator.geolocation.getCurrentPosition(success);
+      });
+
+      //   navigator.geolocation.getCurrentPosition(success);
+
+      function success(pos) {
+        console.log("lat :" + pos.coords.latitude);
+        console.log("lon :" + pos.coords.longitude);
+        posElem.innerHTML = "위도 : " + pos.coords.latitude + ", " + pos.coords.longitude;
+        const lat = pos.coords.latitude;
+        const lon = pos.coords.longitude;
+
+        getWeather(lat, lon);
+      }
+
+      async function getWeather(lat, lon) {
+        try {
+          const { data } = await axios.get("https://api.openweathermap.org/data/2.5/weather", {
+            params: {
+              lat: lat,
+              lon: lon,
+              appid: API_KEY,
+              units: "metric",
+              lang: "kr",
+            },
+          });
+          //   console.log(res.data);
+          console.log(data.main.temp);
+
+          document.querySelector(".temp").innerHTML = data.main.temp;
+          document.querySelector(".location").innerHTML = data.name;
+          //          console.log(iconElem.getAttribute('src'));
+          let icon = data.weather[0].icon;
+          //  let iconUrl = `https://openweathermap.org/img/wn/${icon}@2x.png`;
+          let iconUrl = `images/${icon}@2x.png`;
+
+          //   iconElem.setAttribute(
+          //     'src',
+          //     'https://openweathermap.org/img/wn/10d@2x.png'
+          //   );
+          iconElem.setAttribute("src", iconUrl);
+        } catch (error) {}
+      }
+    </script>
+  </body>
+</html>
