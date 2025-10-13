@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="ko">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <script>
+      //for...in 객체의 key를 순회
+      const user = {
+        name: "han",
+        age: 30,
+        job: "Developer",
+      };
+      //user.name, user('name')
+      console.log(user["name"]);
+
+      const loc = ["서울", "부산", "강원"];
+
+      // object
+      for (const key in user) {
+        //console.log(key);
+        console.log(user[key]);
+      }
+
+      //object array
+      for (const index in loc) {
+        console.log(loc[index]);
+      }
+
+      //array
+      for (const item of loc) {
+        console.log(item);
+      }
+    </script>
+  </body>
+</html>
