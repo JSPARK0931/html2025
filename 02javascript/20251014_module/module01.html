@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="ko">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    export.import
+    <!-- <script src="script.js"></script> -->
+    <!-- <script type="module">
+      import test from "./script.js";
+      console.log(test);
+    </script> -->
+
+    <script type="module">
+      //     import han from "./script.js";
+      // han();
+      //     console.log(han);
+      import han, { a, b, han1 } from "./script.js";
+      console.log(a, b);
+      han();
+      han1();
+    </script>
+  </body>
+</html>
