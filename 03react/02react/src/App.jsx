@@ -1,40 +1,64 @@
-import React from "react";
-import Button from "./components/Button";
-import ViewComp from "./components/ViewComp";
-import View01 from "./components/View01";
+import React, { useState } from "react";
+import Button from "./components/state/Button";
+import "./App.css";
 
 function App() {
-  const city = ["서울", "대전", "인천", "춘천"];
-  const city1 = ["서울", "제주", "인천", "춘천"];
-  const city2 = [
-    { title: "서울", content: "aaaa" },
-    { title: "대전", content: "bbbb" },
-    { title: "인천", content: "cccc" },
-    { title: "춘천", content: "dddd" },
-  ];
+  const [isModal, setIsModal] = useState(false);
 
   return (
     <div>
-      App
-      <Button title="글작성" color="red" />
-      <Button title="글보기" color="blue" />
-      <Button title="글수정" color="pink" />
-      <Button title="글수정" color="black" />
-      <ViewComp cityData={city} />
-      <ViewComp cityData={city1} />
-      {city.map((item, i) => {
-        return <View01 title={item}></View01>;
-      })}
-      <Han />
-    </div>
-  );
-}
+      <h3>모달창만들기</h3>
+      {/* {isModal ? <p>창이열림</p> : <p>창이닫침</p>} */}
+      {isModal ? (
+        <div className="vModal">
+          <div className="title">
+            <h3>모달창</h3>
+            <div
+              onClick={() => {
+                setIsModal(false);
+              }}
+            >
+              X
+            </div>
+          </div>
 
-function Han() {
-  return (
-    <>
-      <div>han</div>
-    </>
+          <p>
+            Lorem ipsum dolor sit amet consectetur adipisicing elit. In,
+            laborum?
+          </p>
+          {/* 닫기버튼 */}
+          <div
+            onClick={() => {
+              setIsModal(false);
+            }}
+          >
+            <Button title="닫기" color="blue"></Button>
+          </div>
+        </div>
+      ) : null}
+
+      <div
+        onClick={() => {
+          setIsModal(!isModal);
+        }}
+      >
+        <Button title="창띄우기"></Button>
+      </div>
+      {/* <div
+        onClick={() => {
+          setIsModal(true);
+        }}
+      >
+        <Button title="창띄우기"></Button>
+      </div>
+      <div
+        onClick={() => {
+          setIsModal(false);
+        }}
+      >
+        <Button title="창닫기" color="red"></Button>
+      </div> */}
+    </div>
   );
 }
 
