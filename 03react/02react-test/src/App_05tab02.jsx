@@ -30,6 +30,7 @@ const data = [
     date: "2025-10-15",
   },
 ];
+
 function App() {
   // 1. data 만들거나 정보 파악 ([{},{},{}])
   // 2. 게시판리스트(array.map())
@@ -39,26 +40,22 @@ function App() {
   // 6. useState(false) 작성
   // 7. props에 대한 설계 (props, event)
   // 8. 오류해결
-
   const [num, setNum] = useState(0);
   const [modal, setModal] = useState(false);
-
   const clickFn = (index) => {
-    // alert(index);
+    //alert(index);
     setNum(index);
     setModal(true);
   };
-
   const modalClose = () => {
     setModal(false);
   };
-
   return (
-    <div>
-      <h3>text list / ({num})</h3>
+    <>
+      <div>text list / {num}</div>
+      {/* <ul>{<li>data[0].title</li>}</ul> */}
       <ul>
         {data.map((item, i) => {
-          // return <li onClick={clickFn}>{item.title}</li>;
           return (
             <li
               onClick={() => {
@@ -71,9 +68,9 @@ function App() {
         })}
       </ul>
       {modal ? (
-        <ModalComp num={num} data={data} modalClose={modalClose} />
+        <ModalComp num={num} data={data} modalClose={modalClose}></ModalComp>
       ) : null}
-    </div>
+    </>
   );
 }
 
