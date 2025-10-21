@@ -1,36 +1,14 @@
-import React, { useState } from "react";
-import ModalComp from "./components/listView/ModalComp";
-const data = [
-  {
-    title: "안녕하세요1",
-    content:
-      "1Lorem ipsum dolor sit amet consectetur adipisicing elit. Cum odit dignissimos culpa natus laborum ad ipsa nostrum ex minima optio!",
-    name: "이순신",
-    date: "2025-10-20",
-  },
-  {
-    title: "안녕하세요2",
-    content:
-      "2Lorem ipsum dolor sit amet consectetur adipisicing elit. Cum odit dignissimos culpa natus laborum ad ipsa nostrum ex minima optio!",
-    name: "홍길동",
-    date: "2025-10-18",
-  },
-  {
-    title: "안녕하세요3",
-    content:
-      "3Lorem ipsum dolor sit amet consectetur adipisicing elit. Cum odit dignissimos culpa natus laborum ad ipsa nostrum ex minima optio!",
-    name: "김철수",
-    date: "2025-10-16",
-  },
-  {
-    title: "안녕하세요4",
-    content:
-      "4Lorem ipsum dolor sit amet consectetur adipisicing elit. Cum odit dignissimos culpa natus laborum ad ipsa nostrum ex minima optio!",
-    name: "홍길동",
-    date: "2025-10-15",
-  },
-];
+import React from "react";
+import { useEffect } from "react";
+import axios from "axios";
+import { useState } from "react";
+
 function App() {
+  //api 데이터 가지고 오기
+  //npm install axios, npm i axios
+  //useEfeect에 axios.get('url') 사용 async..await
+  //api 경로 "https://jsonplaceholder.typicode.com/posts")
+
   // 1. data 만들거나 정보 파악 ([{},{},{}])
   // 2. 게시판리스트(array.map())
   // 3. click event
@@ -40,39 +18,85 @@ function App() {
   // 7. props에 대한 설계 (props, event)
   // 8. 오류해결
 
-  const [num, setNum] = useState(0);
-  const [modal, setModal] = useState(false);
+  const [postData, setPostData] = useState([]);
+  const [isModal, setIsModal] = useState(false);
 
-  const clickFn = (index) => {
-    // alert(index);
-    setNum(index);
-    setModal(true);
+  const modalViewFn = () => {
+    setIsModal(true);
+  };
+  const modalCloseFn = () => {
+    setIsModal(false);
   };
 
-  const modalClose = () => {
-    setModal(false);
-  };
+  function openModal(item) {
+    console.log(item.id);
+    return (
+      <>
+        <div>모달창</div>
+      </>
+    );
+  }
+
+  useEffect(() => {
+    // async function fetchApi(){
+    //   cont res = await fetch()
+    // }
+
+    // const fetch = async function(){
+    //   const res = await fetch()
+    // }
+    console.log("실행되었습니다.");
+    const fetchApi = async () => {
+      const res = await axios.get("https://jsonplaceholder.typicode.com/posts");
+      console.log(res.data);
+      setPostData(res.data);
+    };
+    fetchApi();
+  }, []);
 
   return (
     <div>
-      <h3>text list / ({num})</h3>
-      <ul>
-        {data.map((item, i) => {
-          // return <li onClick={clickFn}>{item.title}</li>;
+      App
+      {postData &&
+        postData.map((item, i) => {
+          console.log(item, isModal);
           return (
-            <li
-              onClick={() => {
-                clickFn(i);
-              }}
-            >
-              {item.title} / {item.name} / {item.date}
-            </li>
+            <>
+              <div
+                key={i}
+                onClick={() => {
+                  openModal(item);
+                }}
+              >
+                {item.id}. {item.title}
+              </div>
+            </>
+            // <>
+            // <>
+            //   <div
+            //     onClick={() => {
+            //       modalViewFn();
+            //     }}
+            //   >
+            //     {item.id}. {item.title}
+            //   </div>
+            //   {isModal ? (
+            //     <div style={{ border: "1px solid blue" }}>
+            //       <p>모달창</p>
+            //       <h3>{item.title}</h3>
+            //       <p>{item.body}</p>
+            //       <button
+            //         onClick={() => {
+            //           modalCloseFn();
+            //         }}
+            //       >
+            //         닫기
+            //       </button>
+            //     </div>
+            //   ) : null}
+            // </>
           );
         })}
-      </ul>
-      {modal ? (
-        <ModalComp num={num} data={data} modalClose={modalClose} />
-      ) : null}
     </div>
   );
 }
