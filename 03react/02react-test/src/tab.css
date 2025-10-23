@@ -1,0 +1,44 @@
+* {
+  margin: 0;
+  padding: 0;
+}
+
+ul,
+li {
+  list-style: none;
+  margin: 0;
+  paddign: 0;
+}
+
+.tab {
+  display: flex;
+  /* background: skyblue; */
+}
+
+.tab li {
+  padding: 10px;
+  border: 1px solid black;
+  border-right: 0 none;
+  border-radius: 10px 10px 0 0;
+  cursor: pointer;
+}
+
+.tab li:hover {
+  background: skyblue;
+}
+
+.tab li:last-child {
+  border-right: 1px solid black;
+}
+
+.tab li.active {
+  background: pink;
+}
+
+.content {
+  width: 500px;
+  height: 300px;
+  background: lightgrey;
+  border: 1px solid black;
+  padding: 10px;
+}

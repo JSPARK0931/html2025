@@ -1,102 +1,126 @@
 import React from "react";
-import { useEffect } from "react";
-import axios from "axios";
 import { useState } from "react";
 
 function App() {
-  //api 데이터 가지고 오기
-  //npm install axios, npm i axios
-  //useEfeect에 axios.get('url') 사용 async..await
-  //api 경로 "https://jsonplaceholder.typicode.com/posts")
-
-  // 1. data 만들거나 정보 파악 ([{},{},{}])
-  // 2. 게시판리스트(array.map())
-  // 3. click event
-  // 4. useState(0)를 작성
-  // 5. modal디자인(컴포넌트생성)
-  // 6. useState(false) 작성
-  // 7. props에 대한 설계 (props, event)
-  // 8. 오류해결
-
-  const [postData, setPostData] = useState([]);
-  const [isModal, setIsModal] = useState(false);
-
-  const modalViewFn = () => {
-    setIsModal(true);
+  const [formData, setFormData] = useState({
+    name: "",
+    userId: "",
+    userEmail: "",
+  });
+  const eventHandler = (e) => {
+    // alert("OK");
+    const { name, type, value, checked } = e.target;
+    setFormData({ ...formData, [name]: value });
   };
-  const modalCloseFn = () => {
-    setIsModal(false);
+  const submitHandler = (e) => {
+    // alert("회원가입완료");
+    e.preventDefault();
+
+    if (!formData.name.trim()) {
+      alert("이름을 입력하세요.");
+    }
+
+    if (!formData.userId.trim()) {
+      alert("아이디를 입력하세요.");
+    } else if (formData.userId.length < 4) {
+      alert("아이디는 4자 이상이어야 합니다.");
+    }
+
+    if (!formData.userEmail.trim()) {
+      alert("이메일을 입력하세요");
+      // } else if (!formData.useremail.includes('@')) {
+      //   alert('이메일 형식이 아닙니다.');
+
+      // / … / → 정규식의 시작과 끝
+      // ^ → 문자열의 시작
+      // $ → 문자열의 끝
+      // [...] → 문자 집합 (대괄호 안의 어떤 문자든 OK)
+      // [^...] → 괄호 안의 문자들은 제외
+      // (^가 대괄호 안에 있을 때는 “부정(not)”의 의미)
+      // \s → 공백 문자 (space, tab, 줄바꿈 등)
+      // @, . → 각각 “@”, “.”라는 문자 그대로
+      // + → 앞의 패턴이 1개 이상 반복
+      //  /^[^\s@]+@[^\s@]+\.[^\s@]+$/
+    } else if (!/^[^\s@]+@[^\s@]+.[^\s@]+$/.test(formData.userEmail)) {
+      alert("이메일 형식이 아닙니다.");
+    }
   };
-
-  function openModal(item) {
-    console.log(item.id);
-    return (
-      <>
-        <div>모달창</div>
-      </>
-    );
-  }
-
-  useEffect(() => {
-    // async function fetchApi(){
-    //   cont res = await fetch()
-    // }
-
-    // const fetch = async function(){
-    //   const res = await fetch()
-    // }
-    console.log("실행되었습니다.");
-    const fetchApi = async () => {
-      const res = await axios.get("https://jsonplaceholder.typicode.com/posts");
-      console.log(res.data);
-      setPostData(res.data);
-    };
-    fetchApi();
-  }, []);
-
   return (
     <div>
-      App
-      {postData &&
-        postData.map((item, i) => {
-          console.log(item, isModal);
-          return (
-            <>
-              <div
-                key={i}
-                onClick={() => {
-                  openModal(item);
-                }}
+      <div>
+        <div className="container">
+          <h3>회원가입</h3>
+        </div>
+        <form onSubmit={submitHandler}>
+          <div className="mb-3">
+            <div className="d-flex flex-column flex-md-row align-items-start align-items-md-center">
+              <label
+                htmlFor="name"
+                className="form-label"
+                style={{ width: "100px" }}
               >
-                {item.id}. {item.title}
-              </div>
-            </>
-            // <>
-            // <>
-            //   <div
-            //     onClick={() => {
-            //       modalViewFn();
-            //     }}
-            //   >
-            //     {item.id}. {item.title}
-            //   </div>
-            //   {isModal ? (
-            //     <div style={{ border: "1px solid blue" }}>
-            //       <p>모달창</p>
-            //       <h3>{item.title}</h3>
-            //       <p>{item.body}</p>
-            //       <button
-            //         onClick={() => {
-            //           modalCloseFn();
-            //         }}
-            //       >
-            //         닫기
-            //       </button>
-            //     </div>
-            //   ) : null}
-            // </>
-          );
-        })}
+                이름 {formData.name}
+              </label>
+              <input
+                type="text"
+                className="form-control"
+                id="name"
+                name="name"
+                placeholder="이름을 입력하세요."
+                onChange={eventHandler}
+              />
+            </div>
+
+            <div style={{ color: "red" }}>이름을 작성하세요</div>
+          </div>
+          <div className="mb-3">
+            <div className="d-flex flex-column flex-md-row align-items-start align-items-md-center">
+              <label
+                htmlFor="userId"
+                className="form-label"
+                style={{ width: "100px" }}
+              >
+                아이디
+              </label>
+              <input
+                type="text"
+                className="form-control"
+                id="userId"
+                name="userId"
+                placeholder="아이디를 입력하세요."
+                onChange={eventHandler}
+              />
+            </div>
+
+            <div style={{ color: "red" }}>아이디를 입력하세요</div>
+          </div>
+          <div className="mb-3">
+            <div className="d-flex flex-column flex-md-row align-items-start align-items-md-center">
+              <label
+                htmlFor="userEmail"
+                className="form-label"
+                style={{ width: "100px" }}
+              >
+                이메일
+              </label>
+              <input
+                type="text"
+                className="form-control"
+                id="userEmail"
+                name="userEmail"
+                placeholder="이메일을 입력하세요."
+                onChange={eventHandler}
+              />
+              <div style={{ color: "red" }}>이메일을 입력하세요</div>
+            </div>
+          </div>
+
+          <div className="text-end">
+            <button className="btn btn-primary">회원가입완료</button>
+          </div>
+        </form>
+      </div>
+      {JSON.stringify(formData)}
     </div>
   );
 }
