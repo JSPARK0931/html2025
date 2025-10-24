@@ -16,34 +16,32 @@ function App() {
 
   const validate = () => {
     // const newError = {
-    //   name: '이름을 입력하세요1',
-    //   userid: '아이디를 입력하세요1',
+    //   name: "이름을 입력하세요.1",
+    //   userid: "아이디를 입력하세요.1",
+    //   useremail: "이메일을 입력하세요.1",
     // };
-
     const newError = {};
 
     if (!formData.name.trim()) {
       // alert('이름을 입력하세요');
-      // newError['name'] = '이름을 입력하세요'
-      newError.name = "이름을 입력하세요";
+      newError.name = "이름을 입력하세요..";
     }
 
     if (!formData.userid.trim()) {
       // alert('아이디를 입력하세요');
-      newError.userid = "아이디를 입력하세요";
+      newError.userid = "아이디를 입력하세요..";
     } else if (formData.userid.length < 4) {
       // alert('아이디는 4자이상 입력하세요');
-      newError.userid = "아이디는 4자이상 입력하세요";
+      newError.userid = "아이디를 4자이상 입력하세요..";
     }
 
     if (!formData.useremail.trim()) {
       // alert('이메일을 입력하세요');
-      newError.useremail = "이메일을 입력하세요";
+      newError.useremail = "이메일을 입력하세요..";
     } else if (!/^[^\s@]+@[^\s@]+.[^\s@]+$/.test(formData.useremail)) {
       // alert('이메일 형식이 아닙니다.');
-      newError.useremail = "이메일 형식이 아닙니다.";
+      newError.useremail = "이메일 형식이 아닙니다..";
     }
-
     return newError;
   };
 
@@ -51,18 +49,19 @@ function App() {
     // alert('회원가입완료');
     e.preventDefault();
 
-    const nError = validate(); // return newError
+    const nError = validate(); // newError return됨
     setErrors(nError); // state
 
     if (Object.keys(nError).length == 0) {
-      // alert('회원가입성공');
+      //alert("회원가입성공");
       // 회원가입완료후 formData 를 axios로 post전송
       // 전송되값, 확인 기다림,
       // 전송후 list page 이동(router)
     } else {
-      // alert('회원가입실패');
+      // alert("회원가입실패");
     }
   };
+
   return (
     <div>
       <div className="container">
@@ -86,7 +85,7 @@ function App() {
                 onChange={eventHandler}
               />
             </div>
-            {/* <div style={{ color: 'red' }}>{errors.name}</div> */}
+            {/* <div style={{ color: "red" }}>이름을 작성하세요</div> */}
             {errors.name && <div style={{ color: "red" }}>{errors.name}</div>}
           </div>
 
@@ -108,9 +107,9 @@ function App() {
                 onChange={eventHandler}
               />
             </div>
-            {/* <div style={{ color: 'red' }}>아이디를 입력하세요</div> */}
+            {/* <div style={{ color: "red" }}>아이디를 입력하세요</div> */}
             {errors.userid && (
-              <div style={{ color: "red" }}>{errors.userid}</div>
+              <div style={{ color: "blue" }}>{errors.userid}</div>
             )}
           </div>
           <div className="mb-3 ">
@@ -131,7 +130,7 @@ function App() {
                 onChange={eventHandler}
               />
             </div>
-            {/* <div style={{ color: 'red' }}>이메일를 입력하세요</div> */}
+            {/* <div style={{ color: "red" }}>이메일를 입력하세요</div> */}
             {errors.useremail && (
               <div style={{ color: "red" }}>{errors.useremail}</div>
             )}
