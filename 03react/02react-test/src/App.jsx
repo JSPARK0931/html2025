@@ -1,33 +1,28 @@
-import React, { useState } from "react";
+import React from "react";
+import { BrowserRouter, Route, Routes } from "react-router-dom";
+import MenuComp from "./components/layout/MenuComp";
+import HomeComp from "./components/pages/home/HomeComp";
+import AboutComp from "./components/pages/about/AboutComp";
+import BoardComp from "./components/pages/board/BoardComp";
+import ErrorComp from "./components/pages/home/ErrorComp";
 
 function App() {
-  const [isLoggedIn, setIsLoggedIn] = useState(true);
-  const loginHandler = () => {
-    setIsLoggedIn(!isLoggedIn);
-  };
   return (
-    <div>
-      <h4>로그인테스트 </h4>
-      {/* {isLoggedIn && (
-        <Greeting isLoggedIn={isLoggedIn} name={"홍길동"}></Greeting>
-      )} */}
-      {isLoggedIn ? (
-        <Greeting isLoggedIn={isLoggedIn} name={"홍길동"} />
-      ) : (
-        <Greeting isLoggedIn={isLoggedIn} name={"홍길동"} />
-      )}
-      <button onClick={loginHandler}>
-        {isLoggedIn ? "로그아웃" : "로그인"}
-      </button>
-    </div>
+    <BrowserRouter>
+      <MenuComp />
+      <div>
+        <Routes>
+          <Route path="/" element={<HomeComp />}></Route>
+          <Route path="/about/*" element={<AboutComp />}></Route>
+          <Route path="/board/*" element={<BoardComp />}></Route>
+          <Route path="/list" element={<BoardComp />}></Route>
+          <Route path="/write" element={<BoardComp />}></Route>
+
+          <Route path="*" element={<ErrorComp />}></Route>
+        </Routes>
+      </div>
+    </BrowserRouter>
   );
 }
 
-//내부 component 조건부 rendering
-function Greeting({ isLoggedIn, name }) {
-  if (isLoggedIn) {
-    return <div>로그인 되었습니다. {name}님 환영합니다. </div>;
-  }
-  return <div> 로그인이 필요합니다. </div>;
-}
 export default App;

@@ -15,3 +15,20 @@
   display: flex;
   justify-content: space-between;
 }
+
+ul,
+li {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.menu li a.active {
+  /* background: pink; */
+  font-weight: bold;
+  color: blue;
+}
+
+.submenu a.active {
+  font-weight: bold;
+}
