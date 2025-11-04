@@ -1,22 +1,16 @@
 import React from "react";
-import ParentComp from "./components/context/ParentComp";
-import { UserProvider } from "./Context/UserContext";
+import ParentComp from "./components/context1/ParentComp";
+import { PostProvider } from "./Context/PostContext";
 
 function App() {
   return (
-    <UserProvider>
-      <ParentComp></ParentComp>
-    </UserProvider>
+    <PostProvider>
+      <div>
+        <h3>Context API</h3>
+        <ParentComp />
+      </div>
+    </PostProvider>
   );
 }
-
-// const UserContext = createContext();
-// function App(){
-//   return (
-//     <UserContext.Provider>
-//        <ParentComp></ParentComp>
-//     </UserContext.Provider>
-//   )
-// }
 
 export default App;
