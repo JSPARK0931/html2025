@@ -1,6 +1,7 @@
 import React from "react";
-import { UserProvider } from "../../02react/src/Context/UserContext";
+
 import ParentComp from "./components/context/ParentComp";
+import { UserProvider } from "./Context/UserContext";
 
 function App() {
   return (

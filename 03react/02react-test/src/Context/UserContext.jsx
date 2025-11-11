@@ -12,8 +12,8 @@ export const UserContext = createContext();
 export const UserProvider = ({ children }) => {
   const [user, setUser] = useState(null);
   useEffect(() => {
-    const fetchData = () => {
-      const { data } = axios.get(
+    const fetchData = async () => {
+      const { data } = await axios.get(
         "https://jsonplaceholder.typicode.com/users/1"
       );
       setUser(data);
