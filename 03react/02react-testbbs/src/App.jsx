@@ -4,10 +4,12 @@ import AboutComp from "./pages/AboutComp";
 import BoardComp from "./pages/BoardComp";
 import MemberComp from "./pages/MemberComp";
 import { BrowserRouter, Route, Routes } from "react-router-dom";
+import MenuComp from "./component/MenuComp";
 
 function App() {
   return (
     <BrowserRouter>
+      <MenuComp />
       <Routes>
         <Route path="/" element={<HomeComp />}></Route>
         <Route path="/about/*" element={<AboutComp />}></Route>
