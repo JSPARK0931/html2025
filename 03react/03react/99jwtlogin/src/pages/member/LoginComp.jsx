@@ -12,7 +12,8 @@ function LoginComp() {
   const [error, setError] = useState("");
 
   const setAccessToken = useAuthStore((state) => state.setAccessToken);
-  const setStoreUsername = useAuthStore((state) => state.setUsername);
+  const setStoreEmail = useAuthStore((state) => state.setEmail);
+  const setLoginStatus = useAuthStore((state) => state.setLoginStatus);
   const navigate = useNavigate();
 
   /**
@@ -34,11 +35,12 @@ function LoginComp() {
       // 응답에서 accessToken 확인 및 저장
       if (response.data.accessToken) {
         setAccessToken(response.data.accessToken);
+        setLoginStatus(true);
         // 응답에 username이 포함되어 있으면 저장
         if (response.data.username) {
-          setStoreUsername(response.data.username);
+          setStoreEmail(response.data.username);
         } else {
-          setStoreUsername(username);
+          setStoreEmail(username);
         }
         // 로그인 성공 후 홈으로 이동
         navigate("/");

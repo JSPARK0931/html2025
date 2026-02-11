@@ -38,6 +38,8 @@ function parseJWT(token) {
 function HomeComp() {
   // store에서 accessToken 가져오기
   const accessToken = useAuthStore((state) => state.accessToken);
+  const email = useAuthStore((state) => state.email);
+  const loginStatus = useAuthStore((state) => state.loginStatus);
 
   // accessToken을 파싱하여 페이로드 정보 추출
   const parsedToken = useMemo(() => {
@@ -55,6 +57,9 @@ function HomeComp() {
           {accessToken || "토큰이 없습니다."}
         </p>
       </div>
+
+      <div>{email}</div>
+      <div>{loginStatus ? "로그인완료" : "로그인안됨"}</div>
 
       {/* 파싱된 토큰 정보 */}
       {accessToken && parsedToken && (

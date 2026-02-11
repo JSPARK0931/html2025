@@ -1,7 +1,21 @@
-import React from 'react';
-import { Link, Outlet } from 'react-router-dom';
+import { authApi } from "@/axios/Auth";
+import { useAuthStore } from "@/store/auth.store";
+import React from "react";
+import { Link, Outlet, useNavigate } from "react-router-dom";
 
 function RootLayout() {
+  const navigate = useNavigate();
+  const { loginStatus, email, clearAuth } = useAuthStore();
+  const handleLogout = async () => {
+    try {
+      await authApi.post("/api/auth/logout");
+    } catch (error) {
+      console.error("로그아웃 요청실패 : ", error);
+    } finally {
+      clearAuth();
+      navigate("/");
+    }
+  };
   return (
     <>
       <header>
@@ -11,9 +25,21 @@ function RootLayout() {
             <li>
               <Link to="/">home</Link>
             </li>
-            <li>
+            {/* <li>
               <Link to="/login">login</Link>
-            </li>
+            </li> */}
+            {loginStatus ? (
+              <>
+                <li>{email}</li>
+                <li>
+                  <button onClick={handleLogout}>Logout</button>
+                </li>
+              </>
+            ) : (
+              <li>
+                <Link to="/login">login</Link>
+              </li>
+            )}
           </ul>
         </nav>
       </header>
