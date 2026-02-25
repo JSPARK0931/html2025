@@ -27,7 +27,7 @@ export const refreshAccessToken = async () => {
   try {
     const accessToken = useAuthStore.getState().accessToken;
     const res = await refreshApi.post("/api/auth/refresh", null, {
-      headers: accessToken ? { Authorization: "Bearer ${accessToken}" } : {},
+      headers: accessToken ? { Authorization: `Bearer ${accessToken}` } : {},
     });
     const data = res.data;
     console.log(data);
