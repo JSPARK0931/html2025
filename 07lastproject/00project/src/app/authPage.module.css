@@ -1,0 +1,112 @@
+.page {
+  min-height: 100vh;
+  background:
+    radial-gradient(1100px 640px at 15% 20%, rgba(88, 101, 242, 0.24), transparent 60%),
+    radial-gradient(900px 600px at 85% 15%, rgba(0, 176, 244, 0.14), transparent 60%),
+    var(--ds-app-bg);
+  color: var(--ds-text);
+  display: grid;
+  place-items: center;
+  padding: var(--ds-space-32) var(--ds-space-24);
+}
+
+.shell {
+  width: min(960px, 100%);
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: var(--ds-space-24);
+  align-items: stretch;
+}
+
+@media (min-width: 980px) {
+  .shell {
+    grid-template-columns: 1.1fr 0.9fr;
+  }
+}
+
+.left {
+  border-radius: var(--ds-radius-xl);
+  border: 1px solid rgba(255, 255, 255, 0.12);
+  background:
+    radial-gradient(900px 520px at 20% 25%, rgba(88, 101, 242, 0.28), transparent 62%),
+    linear-gradient(180deg, rgba(255, 255, 255, 0.06), rgba(255, 255, 255, 0.02));
+  box-shadow: var(--ds-shadow-medium);
+  padding: var(--ds-space-32);
+  display: grid;
+  align-content: center;
+  gap: var(--ds-space-16);
+}
+
+.kicker {
+  font-size: var(--ds-small-size);
+  line-height: var(--ds-small-line);
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  font-weight: 900;
+  color: var(--ds-text-brand);
+}
+
+.title {
+  font-family: var(--ds-font-headline);
+  font-size: clamp(34px, 4vw, 50px);
+  line-height: 1.08;
+  letter-spacing: -0.6px;
+  font-weight: 900;
+}
+
+.desc {
+  color: var(--ds-text-2);
+  font-size: var(--ds-body-lg-size);
+  line-height: var(--ds-body-lg-line);
+  letter-spacing: var(--ds-body-lg-letter);
+  max-width: 56ch;
+}
+
+.right {
+  display: grid;
+  align-content: center;
+}
+
+.formCard {
+  border-radius: var(--ds-radius-xl);
+}
+
+.form {
+  display: grid;
+  gap: var(--ds-space-12);
+}
+
+.formRow {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: var(--ds-space-12);
+}
+
+.mutedLink {
+  color: var(--ds-text-2);
+  font-size: var(--ds-small-size);
+}
+
+.mutedLink:hover {
+  color: var(--ds-text);
+}
+
+.actions {
+  display: grid;
+  gap: var(--ds-space-10);
+  margin-top: var(--ds-space-6);
+}
+
+.divider {
+  height: 1px;
+  background: rgba(255, 255, 255, 0.10);
+  margin: var(--ds-space-10) 0;
+}
+
+.helper {
+  color: var(--ds-text-2);
+  font-size: var(--ds-small-size);
+  line-height: var(--ds-small-line);
+}
+

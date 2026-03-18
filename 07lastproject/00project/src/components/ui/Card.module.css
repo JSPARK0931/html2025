@@ -1,0 +1,41 @@
+.card {
+  border-radius: var(--ds-radius-lg);
+  background: linear-gradient(
+      180deg,
+      rgba(255, 255, 255, 0.06),
+      rgba(255, 255, 255, 0.02)
+    ),
+    var(--ds-surface-1);
+  border: 1px solid var(--ds-border);
+  box-shadow: var(--ds-shadow-low);
+}
+
+.header {
+  padding: var(--ds-space-20) var(--ds-space-20) var(--ds-space-12);
+  border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+}
+
+.title {
+  font-family: var(--ds-font-display);
+  font-size: 18px;
+  font-weight: 700;
+  color: var(--ds-text);
+  letter-spacing: -0.2px;
+}
+
+.description {
+  margin-top: var(--ds-space-6);
+  color: var(--ds-text-2);
+  font-size: var(--ds-body-size);
+  line-height: var(--ds-body-line);
+}
+
+.body {
+  padding: var(--ds-space-20);
+}
+
+.footer {
+  padding: var(--ds-space-12) var(--ds-space-20) var(--ds-space-20);
+  border-top: 1px solid rgba(255, 255, 255, 0.08);
+}
+

@@ -1,0 +1,20 @@
+.page {
+  min-height: 100vh;
+  background:
+    radial-gradient(1200px 600px at 18% 10%, rgba(88, 101, 242, 0.22), transparent 55%),
+    var(--ds-app-bg);
+  color: var(--ds-text);
+}
+
+.container {
+  max-width: 1120px;
+  margin: 0 auto;
+  padding: var(--ds-space-32) var(--ds-space-24) var(--ds-space-64);
+}
+
+.bodyText {
+  color: var(--ds-text-2);
+  font-size: var(--ds-body-size);
+  line-height: var(--ds-body-line);
+}
+

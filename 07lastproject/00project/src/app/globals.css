@@ -1,0 +1,224 @@
+@import "tailwindcss";
+
+:root {
+  /* ===== TEST Design Tokens (from extracted JSON) ===== */
+  /* fonts */
+  --ds-font-primary: "gg sans", "Microsoft JhengHei", var(--font-geist-sans),
+    system-ui, sans-serif;
+  --ds-font-display: "gg sans", var(--font-geist-sans), system-ui, sans-serif;
+  --ds-font-headline: "ABC Ginto Nord", var(--font-geist-sans), system-ui,
+    sans-serif;
+  --ds-font-code: "gg mono", var(--font-geist-mono), ui-monospace, SFMono-Regular,
+    Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace;
+
+  /* colors: brand */
+  --ds-brand-blurple: #5865f2;
+  --ds-brand-blurple-dark: #3442d9;
+  --ds-brand-blurple-hover: #8891f2;
+  --ds-brand-blurple-50: hsl(234.9 85.6% 64.7%);
+  --ds-brand-blurple-60: hsl(232.9 46.7% 50%);
+  --ds-brand-blurple-65: hsl(232 47.5% 43.3%);
+
+  /* colors: neutral */
+  --ds-neutral-white: #ffffff;
+  --ds-neutral-not-quite-black: #23272a;
+  --ds-neutral-dark-charcoal: #2c2f33;
+  --ds-neutral-greyple: #99aab5;
+  --ds-neutral-off-white: #f6f6f6;
+  --ds-neutral-dim-grey: #50555f;
+
+  /* colors: semantic */
+  --ds-semantic-success: #57f287;
+  --ds-semantic-mint-green: #43b581;
+  --ds-semantic-danger: #ed4245;
+  --ds-semantic-warning: #fee75c;
+  --ds-semantic-info: #00b0f4;
+  --ds-semantic-orange: #fda220;
+  --ds-semantic-fuchsia: #eb459e;
+
+  /* colors: status */
+  --ds-status-online: #43b581;
+  --ds-status-idle: hsl(38.5 100% 71.6%);
+  --ds-status-dnd: hsl(358.1 68.8% 56.1%);
+  --ds-status-offline: hsl(232.5 4.3% 63.1%);
+
+  /* colors: background */
+  --ds-bg-primary: hsl(240 6.7% 15.1%);
+  --ds-bg-secondary: hsl(240 7.1% 11%);
+  --ds-bg-tertiary: hsl(240 6.5% 15.1%);
+  --ds-bg-chat: hsl(232.5 3.96% 60.4%);
+  --ds-bg-modal: hsl(240 6.5% 15.1%);
+  --ds-bg-scrim: rgba(0, 0, 0, 0.72);
+  --ds-bg-code: rgba(88, 101, 242, 0.12);
+
+  /* colors: text */
+  --ds-text-default: hsl(0 0% 100%);
+  --ds-text-muted: hsl(230 4.5% 74.1%);
+  --ds-text-subtle: hsl(240 4.5% 86.9%);
+  --ds-text-link: #00b0f4;
+  --ds-text-brand: hsl(228.3 100% 81.9%);
+  --ds-text-danger: hsl(2.6 100% 81.9%);
+  --ds-text-positive: hsl(137.4 44.7% 66.7%);
+  --ds-text-warning: hsl(38.5 100% 62.5%);
+
+  /* colors: border */
+  --ds-border-default: hsl(232.5 3.96% 60.4%);
+  --ds-border-muted: hsl(233.3 4% 56.3%);
+  --ds-border-subtle: hsl(230 4.5% 74.1%);
+  --ds-border-strong: hsl(240 6.7% 94.1%);
+  --ds-border-focus: hsl(213.3 91.5% 76.9%);
+
+  /* button colors */
+  --ds-button-primary-bg: #5865f2;
+  --ds-button-primary-hover: #8891f2;
+  --ds-button-primary-active: hsl(232 47.5% 43.3%);
+  --ds-button-danger-bg: hsl(355.6 64.7% 50%);
+  --ds-button-success-bg: hsl(151.1 100% 26.1%);
+
+  /* typography scale */
+  --ds-h1-size: 56px;
+  --ds-h1-line: 67.2px;
+  --ds-h1-letter: -0.56px;
+  --ds-h1-weight: 700;
+
+  --ds-h2-size: 22px;
+  --ds-h2-line: 17.6px;
+  --ds-h2-letter: -0.66px;
+  --ds-h2-weight: 700;
+
+  --ds-body-size: 16px;
+  --ds-body-line: 24px;
+  --ds-body-weight: 400;
+
+  --ds-body-lg-size: 20px;
+  --ds-body-lg-line: 26px;
+  --ds-body-lg-letter: 0.32px;
+  --ds-body-lg-weight: 400;
+
+  --ds-small-size: 12px;
+  --ds-small-line: 16px;
+  --ds-small-weight: 400;
+
+  --ds-button-size: 16px;
+  --ds-button-line: 19.2px;
+  --ds-button-letter: 0.25px;
+  --ds-button-weight: 500;
+
+  /* spacing */
+  --ds-space-0: 0px;
+  --ds-space-4: 4px;
+  --ds-space-6: 6px;
+  --ds-space-8: 8px;
+  --ds-space-10: 10px;
+  --ds-space-12: 12px;
+  --ds-space-16: 16px;
+  --ds-space-20: 20px;
+  --ds-space-24: 24px;
+  --ds-space-26: 26px;
+  --ds-space-30: 30px;
+  --ds-space-32: 32px;
+  --ds-space-40: 40px;
+  --ds-space-48: 48px;
+  --ds-space-64: 64px;
+  --ds-space-80: 80px;
+  --ds-space-96: 96px;
+  --ds-space-128: 128px;
+
+  /* radii */
+  --ds-radius-none: 0px;
+  --ds-radius-xs: 4px;
+  --ds-radius-sm: 8px;
+  --ds-radius-md: 12px;
+  --ds-radius-lg: 16px;
+  --ds-radius-xl: 24px;
+  --ds-radius-xxl: 32px;
+  --ds-radius-round: 2147483647px;
+  --ds-radius-button: 8px;
+  --ds-radius-button-pill: 16px;
+  --ds-radius-avatar: 50%;
+
+  /* shadows */
+  --ds-shadow-border: 0 0 0 1px rgba(255, 255, 255, 0.08);
+  --ds-shadow-low: 0 1px 4px 0 rgba(0, 0, 0, 0.14);
+  --ds-shadow-low-hover: 0 4px 10px 0 rgba(0, 0, 0, 0.14);
+  --ds-shadow-medium: 0 4px 8px 0 rgba(0, 0, 0, 0.16);
+  --ds-shadow-high: 0 12px 24px 0 rgba(0, 0, 0, 0.24);
+
+  /* component tokens */
+  --ds-comp-button-height-sm: 32px;
+  --ds-comp-button-height-md: 40px;
+  --ds-comp-button-padding: 2px 16px;
+  --ds-comp-button-transition: background-color 0.17s ease, color 0.17s ease,
+    box-shadow 0.17s ease, transform 0.06s ease;
+
+  --ds-comp-input-height-sm: 32px;
+  --ds-comp-input-height-md: 40px;
+  --ds-comp-input-height-form: 44px;
+  --ds-comp-input-radius: 4px;
+  --ds-comp-input-font-size: 16px;
+  --ds-comp-input-bg: rgba(0, 0, 0, 0.16);
+  --ds-comp-input-border: hsl(232.5 3.96% 60.4%);
+  --ds-comp-input-border-focus: #5865f2;
+  --ds-comp-input-border-error: hsl(2.6 100% 82%);
+
+  /* app-level derived tokens */
+  --ds-app-bg: var(--ds-bg-secondary);
+  --ds-surface-1: var(--ds-bg-primary);
+  --ds-surface-2: var(--ds-bg-tertiary);
+  --ds-text: var(--ds-text-default);
+  --ds-text-2: var(--ds-text-muted);
+  --ds-border: rgba(255, 255, 255, 0.10);
+  --ds-focus: var(--ds-border-focus);
+
+  /* legacy variables used by template */
+  --background: var(--ds-app-bg);
+  --foreground: var(--ds-text);
+}
+
+@theme inline {
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+  --font-sans: var(--font-geist-sans);
+  --font-mono: var(--font-geist-mono);
+}
+
+/* Optional: light theme hook */
+html[data-theme="light"] {
+  --ds-app-bg: var(--ds-neutral-off-white);
+  --ds-surface-1: var(--ds-neutral-white);
+  --ds-surface-2: var(--ds-neutral-off-white);
+  --ds-text: var(--ds-neutral-not-quite-black);
+  --ds-text-2: var(--ds-neutral-dim-grey);
+  --ds-border: rgba(35, 39, 42, 0.12);
+  --background: var(--ds-app-bg);
+  --foreground: var(--ds-text);
+}
+
+body {
+  background: var(--background);
+  color: var(--foreground);
+  font-family: var(--ds-font-primary);
+}
+
+* {
+  box-sizing: border-box;
+}
+
+html,
+body {
+  height: 100%;
+}
+
+a {
+  color: inherit;
+  text-decoration: none;
+}
+
+::selection {
+  background: rgba(88, 101, 242, 0.35);
+}
+
+:focus-visible {
+  outline: none;
+  box-shadow: 0 0 0 3px rgba(88, 101, 242, 0.35);
+}
